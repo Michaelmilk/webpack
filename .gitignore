@@ -4,3 +4,6 @@
 *.suo
 /node_modules
 *.tmp
+*.js
+*.map
+/dist
