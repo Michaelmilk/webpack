@@ -3,6 +3,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var helpers = require('./helpers');
 
+const extractLib = new ExtractTextPlugin('lib.css');
+
 module.exports = {
   entry: {
     'polyfills': './src/polyfills.ts',
@@ -14,6 +16,10 @@ module.exports = {
     extensions: ['.ts', '.js']
   },
 
+  resolveLoader: {
+      moduleExtensions: ['-loader']
+  },
+
   module: {
     rules: [
       {
@@ -21,8 +27,11 @@ module.exports = {
         loaders: [
           {
             loader: 'awesome-typescript-loader',
-            options: { configFileName: helpers.root('src', 'tsconfig.json') }
-          } , 'angular2-template-loader'
+            options: { 
+              configFileName: helpers.root('src', 'tsconfig.json') 
+            }
+          } , 
+          'angular2-template-loader'
         ]
       },
       {
@@ -36,12 +45,54 @@ module.exports = {
       {
         test: /\.css$/,
         exclude: helpers.root('src', 'app'),
-        loader: ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader?sourceMap' })
+        loader: ExtractTextPlugin.extract(
+          { 
+            fallback: 'style-loader', 
+            use: 'css-loader?sourceMap' 
+        })
       },
       {
         test: /\.css$/,
         include: helpers.root('src', 'app'),
         loader: 'raw-loader'
+      },
+      // {
+      //   test: /\.scss$/,
+      //   loader: ExtractTextPlugin.extract("style", 'css!sass') 
+      //   //这里用了样式分离出来的插件，如果不想分离出来，可以直接这样写 loader:'style!css!sass'
+      // },
+      {
+        test: /\.scss$/i,
+        include: helpers.root('src', 'assets', 'sass'),
+        loader: extractLib.extract({
+            fallback: 'style-loader',
+            use: [
+                {
+                    loader: 'css-loader',
+                },
+                {
+                    loader: 'sass-loader'
+                }
+            ]
+        })
+      },
+
+      //for bootstrap
+      { 
+        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, 
+        loader: "file" 
+      },
+      { 
+        test: /\.(woff|woff2)$/, 
+        loader:"url?prefix=font/&limit=5000" 
+      },
+      { 
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, 
+        loader: "url?limit=10000&mimetype=application/octet-stream" 
+      },
+      { 
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, 
+        loader: "url?limit=10000&mimetype=image/svg+xml" 
       }
     ]
   },
@@ -61,6 +112,13 @@ module.exports = {
 
     new HtmlWebpackPlugin({
       template: 'src/index.html'
+    }),
+
+    extractLib,
+
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery"
     })
   ]
 };

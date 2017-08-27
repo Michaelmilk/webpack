@@ -9,10 +9,14 @@ const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 module.exports = webpackMerge(commonConfig, {
   devtool: 'source-map',
 
+  //[name]对应entry对象键名,也可以指定名字,加上id和hash可以避免缓存问题,webpack会用实际值替换类似[hash]这样字符串
   output: {
     path: helpers.root('dist'),
     publicPath: '/',
-    filename: '[name].[hash].js',
+    //filename: '[name].[hash].js',
+    filename: '[name].js',
+    //The key point here was to remove the file extensions from ExtractTextPlugin() and output{} and then adding them to entry{}, otherwise webpack would generate a JS file for each CSS file
+    //filename: '[name]',
     chunkFilename: '[id].[hash].chunk.js'
   },
 
@@ -23,7 +27,8 @@ module.exports = webpackMerge(commonConfig, {
         keep_fnames: true
       }
     }),
-    new ExtractTextPlugin('[name].[hash].css'),
+    //new ExtractTextPlugin('[name].[hash].css'),
+    new ExtractTextPlugin('[name].css'),
     new webpack.DefinePlugin({
       'process.env': {
         'ENV': JSON.stringify(ENV)
