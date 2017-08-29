@@ -9,6 +9,14 @@ var _root = path.resolve(__dirname, '..');
 
 function root(args) {
   args = Array.prototype.slice.call(arguments, 0);
+  
+  // console.log(path.join.apply(path, [_root].concat(args)));
+  // D:\code\myGit\webpack\src\tsconfig.json
+  // D:\code\myGit\webpack\src\app
+  // D:\code\myGit\webpack\src\app
+  // D:\code\myGit\webpack\src
+  // D:\code\myGit\webpack\dist
+
   return path.join.apply(path, [_root].concat(args));
 }
 
