@@ -44,38 +44,55 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        exclude: helpers.root('src', 'app'),
-        loader: ExtractTextPlugin.extract(
+        //include: helpers.root('src', 'app'),
+        loader: 'raw-loader'
+      },
+      {
+        test: /\.css$/,
+        //exclude: helpers.root('src', 'app'),
+        use: ExtractTextPlugin.extract(
           { 
             fallback: 'style-loader', 
             use: 'css-loader?sourceMap' 
         })
       },
-      {
-        test: /\.css$/,
-        include: helpers.root('src', 'app'),
-        loader: 'raw-loader'
-      },
+      
+
+      // {
+      //       test: /\.scss$/,
+      //       use: [{
+      //           loader: "style-loader"
+      //       }, {
+      //           loader: "css-loader"
+      //       }, {
+      //           loader: 'sass-loader',
+      //           options: {
+      //               includePaths: [
+      //                   helpers.root('src', 'assets', 'sass'),
+      //               ]
+      //           }
+      //       }]
+      //   },
       // {
       //   test: /\.scss$/,
       //   loader: ExtractTextPlugin.extract("style", 'css!sass') 
       //   //这里用了样式分离出来的插件，如果不想分离出来，可以直接这样写 loader:'style!css!sass'
       // },
-      {
-        test: /\.scss$/i,
-        include: helpers.root('src', 'assets', 'sass'),
-        loader: extractLib.extract({
-            fallback: 'style-loader',
-            use: [
-                {
-                    loader: 'css-loader',
-                },
-                {
-                    loader: 'sass-loader'
-                }
-            ]
-        })
-      },
+      // {
+      //   test: /\.scss$/i,
+      //   include: helpers.root('src', 'assets', 'sass'),
+      //   loader: extractLib.extract({
+      //       fallback: 'style-loader',
+      //       use: [
+      //           {
+      //               loader: 'css-loader',
+      //           },
+      //           {
+      //               loader: 'sass-loader'
+      //           }
+      //       ]
+      //   })
+      // },
 
       //for bootstrap
       { 
@@ -113,8 +130,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/index.html'
     }),
-
-    extractLib,
 
     new webpack.ProvidePlugin({
       $: "jquery",
