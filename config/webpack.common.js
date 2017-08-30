@@ -3,8 +3,6 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var helpers = require('./helpers');
 
-const extractLib = new ExtractTextPlugin('lib.css');
-
 module.exports = {
   entry: {
     'polyfills': './src/polyfills.ts',
@@ -42,57 +40,30 @@ module.exports = {
         test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
         loader: 'file-loader?name=assets/[name].[hash].[ext]'
       },
+      //extract import(.../../xxx.css)
       {
         test: /\.css$/,
-        //include: helpers.root('src', 'app'),
+        include: helpers.root('src', 'app'),
         loader: 'raw-loader'
       },
       {
         test: /\.css$/,
-        include: helpers.root('src', 'app'),
+        //include: helpers.root('src', 'app'),
+        //include: /app/,
         use: ExtractTextPlugin.extract(
           { 
             fallback: 'style-loader', 
             use: 'css-loader?sourceMap' 
         })
       },
-      {
-        test: /\.css$/,
-        exclude: helpers.root('src', 'app'),
-        use: extractLib.extract(
-          { 
-            fallback: 'style-loader', 
-            use: 'css-loader?sourceMap' 
-        })
-      },
       // {
-      //   test: /\.scss$/,
-      //   use: [{
-      //       loader: "style-loader"
-      //   }, {
-      //       loader: "css-loader"
-      //   }, {
-      //       loader: 'sass-loader',
-      //       options: {
-      //           includePaths: [
-      //               helpers.root('src', 'assets', 'sass'),
-      //           ]
-      //       }
-      //   }]
+      //   test: /\.scss$/i,
+      //   //include: helpers.root('src', 'assets', 'sass'),
+      //   use: extractLib.extract({
+      //       fallback: 'style-loader',
+      //       use: ['css-loader', 'sass-loader']
+      //   })
       // },
-      // {
-      //   test: /\.scss$/,
-      //   loader: ExtractTextPlugin.extract("style", 'css!sass') 
-      //   //这里用了样式分离出来的插件，如果不想分离出来，可以直接这样写 loader:'style!css!sass'
-      // },
-      {
-        test: /\.scss$/i,
-        //include: helpers.root('src', 'assets', 'sass'),
-        use: extractLib.extract({
-            fallback: 'style-loader',
-            use: ['css-loader', 'sass-loader']
-        })
-      },
 
       //for bootstrap
       { 
@@ -130,8 +101,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/index.html'
     }),
-
-    extractLib,
 
     new webpack.ProvidePlugin({
       $: "jquery",
