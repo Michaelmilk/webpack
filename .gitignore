@@ -1,9 +1,10 @@
 # Build and Object Folders
 /*/bin/
 /*/obj/
-*.suo
 /node_modules
+/dist
 *.tmp
 *.js
 *.map
-/dist
+*.log
+*.suo
