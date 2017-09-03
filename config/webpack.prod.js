@@ -13,6 +13,7 @@ module.exports = webpackMerge(commonConfig, {
   output: {
     path: helpers.root('dist'),
     publicPath: '/',
+    //publicPath: "http://localhost:8080/",
     //filename: '[name].[hash].js',
     filename: '[name].js',
     //The key point here was to remove the file extensions from ExtractTextPlugin() and output{} and then adding them to entry{}, otherwise webpack would generate a JS file for each CSS file

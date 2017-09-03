@@ -47,7 +47,8 @@
     "systemjs": "0.19.39",
     "zone.js": "^0.8.4",
     "jquery": "3.2.1",
-    "bootstrap": "3.3.7"
+    "bootstrap": "3.3.7",
+    "font-awesome": "4.7.0"
   },
   "devDependencies": {
     "@types/angular": "^1.5.16",

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import '../assets/css/styles.css';
+import '../assets/css/side-bar.css';
 //import '../assets/sass/test.scss';
 
 @Component({
@@ -8,4 +9,15 @@ import '../assets/css/styles.css';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent { }
+export class AppComponent {
+  isClicked: boolean;
+
+  constructor(){
+    this.isClicked = false;
+  }
+
+  collapseSideBar(){
+    this.isClicked = !this.isClicked;
+    console.log('isclicked', this.isClicked);
+  }
+}

@@ -3,6 +3,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var helpers = require('./helpers');
 
+//var extractLib = new ExtractTextPlugin("lib.css");
+
 module.exports = {
   entry: {
     'polyfills': './src/polyfills.ts',
@@ -56,32 +58,54 @@ module.exports = {
             use: 'css-loader?sourceMap' 
         })
       },
-      // {
-      //   test: /\.scss$/i,
-      //   //include: helpers.root('src', 'assets', 'sass'),
-      //   use: extractLib.extract({
-      //       fallback: 'style-loader',
-      //       use: ['css-loader', 'sass-loader']
-      //   })
-      // },
+      {
+        test: /\.scss$/i,
+        //include: helpers.root('src', 'assets', 'sass'),
+        use: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: ['css-loader', 'sass-loader']
+        })
+      },
 
       //for bootstrap
-      { 
-        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, 
-        loader: "file" 
-      },
-      { 
-        test: /\.(woff|woff2)$/, 
-        loader:"url?prefix=font/&limit=5000" 
-      },
-      { 
-        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, 
-        loader: "url?limit=10000&mimetype=application/octet-stream" 
-      },
-      { 
-        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, 
-        loader: "url?limit=10000&mimetype=image/svg+xml" 
-      }
+      // { 
+      //   test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, 
+      //   loader: "file" 
+      // },
+      // { 
+      //   test: /\.(woff|woff2)$/, 
+      //   loader:"url?prefix=font/&limit=5000" 
+      // },
+      // { 
+      //   test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, 
+      //   loader: "url?limit=10000&mimetype=application/octet-stream" 
+      // },
+      // { 
+      //   test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, 
+      //   loader: "url?limit=10000&mimetype=image/svg+xml" 
+      // },
+
+      //for font-awesome
+      // {
+      //   test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
+      //   loader: "url?limit=10000&mimetype=application/font-woff"
+      // }, 
+      // {
+      //   test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
+      //   loader: "url?limit=10000&mimetype=application/font-woff"
+      // }, 
+      // {
+      //   test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+      //   loader: "url?limit=10000&mimetype=application/octet-stream"
+      // }, 
+      // {
+      //   test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+      //   loader: "file"
+      // }, 
+      // {
+      //   test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+      //   loader: "url?limit=10000&mimetype=image/svg+xml"
+      // }
     ]
   },
 
