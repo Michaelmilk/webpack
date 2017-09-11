@@ -6,7 +6,14 @@ import { Component, OnInit } from '@angular/core';
     //styleUrls: ['./WorkItemTable.component.css']
 })
 export class WorkItemTableComponent implements OnInit {
-    constructor() { }
+    columns: Array<string>;
+    attributes: Array<string>;
+    
+    constructor() {
+        this.columns = ["EntitySpaceName", "CustomerId", "CustomerEnv", "CreatedBy", "UpdatedBy", "Action"];
+
+        this.attributes = [];
+     }
 
     ngOnInit() { }
 }

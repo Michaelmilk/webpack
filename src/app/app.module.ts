@@ -1,23 +1,36 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
+import { FormsModule }    from '@angular/forms';//ngModel
+
+//routes
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 
-// import '../../node_modules/bootstrap/dist/css/bootstrap.css';
-// import '../../node_modules/bootstrap/dist/js/bootstrap.js';
-//use the package name directly, no need to use relative path
-//import 'bootstrap/dist/css/bootstrap.css';
-//import 'bootstrap/dist/js/bootstrap.js';
+//dashboard
+import { DashboardComponent}  from './components/dashboard/dashboard.component'
 
-//import '../assets/css/styles.css';
+//analysis
+import { EntityAnalysisComponent }  from './components/entityAnalysis/entityAnalysis.component';
+import { EntitySpaceAnalysisComponent } from './components/entityAnalysis/entitySpaceAnalysis.component';
+import { EntityViewAnalysisComponent }  from './components/entityAnalysis/entityViewAnalysis.component';
+import { GraphAnalysisComponent }  from './components/entityAnalysis/graphAnalysis.component';
+
 
 @NgModule({
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   declarations: [
-    AppComponent
+    AppComponent,
+    DashboardComponent,
+    EntityAnalysisComponent,
+    EntitySpaceAnalysisComponent,
+    EntityViewAnalysisComponent,
+    GraphAnalysisComponent
   ],
   bootstrap: [ AppComponent ]
 })
+
 export class AppModule { }
