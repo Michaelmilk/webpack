@@ -8,3 +8,6 @@
 *.map
 *.log
 *.suo
+
+
+!**/js/*.js
