@@ -15,7 +15,9 @@
             <tbody *ngFor="let experimentDto of experimentDtos">
                 <tr>
                     <td class="text-center" [innerHtml]=experimentDto.Id></td>
-                    <td class="text-center" [innerHtml]=experimentDto.Name></td>
+                    <td class="text-center">
+                        <a routerLink="/entityViewAnalysis"  [innerHtml]=experimentDto.Name></a>
+                    </td>
                     <td class="text-center" [innerHtml]=experimentDto.Type></td>
                     <td class="text-center" [innerHtml]=experimentDto.CreatedBy></td>
                     <td class="text-center" [innerHtml]=experimentDto.UpdatedBy></td>
