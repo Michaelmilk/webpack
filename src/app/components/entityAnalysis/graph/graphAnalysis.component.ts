@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'selector',
+    selector: 'graph-analysis',
     templateUrl: './graphAnalysis.component.html',
     //styleUrls: ['./name.component.css']
 })

@@ -6,9 +6,9 @@ import { DashboardComponent}  from './components/dashboard/dashboard.component'
 
 //analysis
 import { EntityAnalysisComponent }  from './components/entityAnalysis/entityAnalysis.component';
-import { EntitySpaceAnalysisComponent } from './components/entityAnalysis/entitySpaceAnalysis.component';
-import { EntityViewAnalysisComponent }  from './components/entityAnalysis/entityViewAnalysis.component';
-import { GraphAnalysisComponent }  from './components/entityAnalysis/graphAnalysis.component';
+import { EntitySpaceAnalysisComponent } from './components/entityAnalysis/entitySpace/entitySpaceAnalysis.component';
+import { EntityViewAnalysisComponent }  from './components/entityAnalysis/entityView/entityViewAnalysis.component';
+import { GraphAnalysisComponent }  from './components/entityAnalysis/graph/graphAnalysis.component';
 
 // import { DashboardComponent }   from './dashboard.component';
 // import { HeroesComponent }      from './heroes.component';
@@ -28,12 +28,20 @@ const dashboardRoutes: Routes = [
   { path: 'dashboard',  component: DashboardComponent }
 ];
 
+// const analysisRoutes: Routes = [
+//   { path: '', redirectTo: '/entityAnalysis', pathMatch: 'full' },
+//   { path: 'entityAnalysis',  component: EntityAnalysisComponent },
+//   { path: 'entitySpaceAnalysis',  component: EntitySpaceAnalysisComponent },
+//   { path: 'entityViewAnalysis', component: EntityViewAnalysisComponent },
+//   { path: 'graphAnalysis',     component: GraphAnalysisComponent }
+// ];
+
 const analysisRoutes: Routes = [
   { path: '', redirectTo: '/entityAnalysis', pathMatch: 'full' },
   { path: 'entityAnalysis',  component: EntityAnalysisComponent },
-  { path: 'entitySpaceAnalysis',  component: EntitySpaceAnalysisComponent },
-  { path: 'entityViewAnalysis', component: EntityViewAnalysisComponent },
-  { path: 'graphAnalysis',     component: GraphAnalysisComponent }
+  { path: 'analysis/entitySpace',  component: EntitySpaceAnalysisComponent },
+  { path: 'analysis/entityViewAnalysis', component: EntityViewAnalysisComponent },
+  { path: 'analysis/graphAnalysis',     component: GraphAnalysisComponent }
 ];
 
 allRoutes = allRoutes.concat(dashboardRoutes, analysisRoutes);

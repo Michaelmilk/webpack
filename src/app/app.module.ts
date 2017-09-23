@@ -11,20 +11,26 @@ import { AppComponent } from './app.component';
 import { DashboardComponent}  from './components/dashboard/dashboard.component'
 
 //analysis
+import { AnalysisNavComponent }  from './components/entityAnalysis/analysisNav.component';
 import { EntityAnalysisComponent }  from './components/entityAnalysis/entityAnalysis.component';
-import { EntitySpaceAnalysisComponent } from './components/entityAnalysis/entitySpaceAnalysis.component';
-import { EntityViewAnalysisComponent }  from './components/entityAnalysis/entityViewAnalysis.component';
-import { GraphAnalysisComponent }  from './components/entityAnalysis/graphAnalysis.component';
+import { EntitySpaceAnalysisComponent } from './components/entityAnalysis/entitySpace/entitySpaceAnalysis.component';
+import { EntityViewAnalysisComponent }  from './components/entityAnalysis/entityView/entityViewAnalysis.component';
+import { GraphAnalysisComponent }  from './components/entityAnalysis/graph/graphAnalysis.component';
+
+//plugins
+import {SlimLoadingBarModule} from 'ng2-slim-loading-bar'
 
 
 @NgModule({
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SlimLoadingBarModule.forRoot()
   ],
   declarations: [
     AppComponent,
     DashboardComponent,
+    AnalysisNavComponent,
     EntityAnalysisComponent,
     EntitySpaceAnalysisComponent,
     EntityViewAnalysisComponent,

@@ -48,7 +48,8 @@
     "zone.js": "^0.8.4",
     "jquery": "3.2.1",
     "bootstrap": "3.3.7",
-    "font-awesome": "4.7.0"
+    "font-awesome": "4.7.0",
+    "ng2-slim-loading-bar": "4.0.0"
   },
   "devDependencies": {
     "@types/angular": "^1.5.16",

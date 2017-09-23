@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'selector',
+    selector: 'view-analysis',
     templateUrl: './entityViewAnalysis.component.html',
     //styleUrls: ['./name.component.css']
 })

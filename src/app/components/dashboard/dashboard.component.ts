@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import {experimentDto} from "../../core/experimentDto"
 import { experimentDtos } from '../../app.mockdata'
+import { AnalysisType } from '../../core/enums'
 
 @Component({
     selector: 'selector',
@@ -10,15 +11,15 @@ import { experimentDtos } from '../../app.mockdata'
 })
 export class DashboardComponent implements OnInit {
     experimentDtos: Array<experimentDto>;
-
+    AnalysisType: typeof AnalysisType = AnalysisType;
     constructor() { }
 
     ngOnInit() { 
-        console.log(experimentDtos);
+        //console.log(experimentDtos);
         this.experimentDtos = experimentDtos;        
     }
 
     test(){
-        console.log(experimentDtos);
+        //console.log(experimentDtos);
     }
 }

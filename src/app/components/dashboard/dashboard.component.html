@@ -16,9 +16,9 @@
                 <tr>
                     <td class="text-center" [innerHtml]=experimentDto.Id></td>
                     <td class="text-center">
-                        <a routerLink="/entityViewAnalysis"  [innerHtml]=experimentDto.Name></a>
+                        <a routerLink="/analysis/entitySpace"  [innerHtml]=experimentDto.Name></a>
                     </td>
-                    <td class="text-center" [innerHtml]=experimentDto.Type></td>
+                    <td class="text-center" [innerHtml]=AnalysisType[experimentDto.Type]></td>
                     <td class="text-center" [innerHtml]=experimentDto.CreatedBy></td>
                     <td class="text-center" [innerHtml]=experimentDto.UpdatedBy></td>
                     <td class="text-center">

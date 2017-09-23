@@ -1,0 +1,21 @@
+<div class="stepwizard col-md-offset-3">
+    <div class="stepwizard-row setup-panel" [ngSwitch]="analysisType">
+        <div class="stepwizard-step">
+            <a href="#step-1" type="button" class="btn btn-primary btn-circle">E</a>
+            <p>Explorer</p>
+        </div>
+        <div class="stepwizard-step">
+            <a href="#step-2" type="button" class="btn btn-default btn-circle">S</a>
+            <p>Statistic</p>
+        </div>
+        <div class="stepwizard-step">
+            <a href="#step-3" type="button" class="btn btn-default btn-circle">F</a>
+            <p>Filter</p>
+        </div>
+        <div class="stepwizard-step" *ngSwitchCase="2">
+            <a href="#step-3" type="button" class="btn btn-default btn-circle">F</a>
+            <p>Filter</p>
+        </div>
+    </div>
+</div>
+<div *ngIf="analysisType==1">hhhahaha</div>
