@@ -13,12 +13,20 @@ import { DashboardComponent}  from './components/dashboard/dashboard.component'
 //analysis
 import { AnalysisNavComponent }  from './components/entityAnalysis/analysisNav.component';
 import { EntityAnalysisComponent }  from './components/entityAnalysis/entityAnalysis.component';
+
 import { EntitySpaceAnalysisComponent } from './components/entityAnalysis/entitySpace/entitySpaceAnalysis.component';
+import { PayloadExplorerComponent } from './components/entityAnalysis/entitySpace/payloadExplorer.component';
+import { PayloadStatisticComponent } from './components/entityAnalysis/entitySpace/payloadStatistic.component';
+import { PayloadFilterComponent } from './components/entityAnalysis/entitySpace/payloadFilter.component';
+
 import { EntityViewAnalysisComponent }  from './components/entityAnalysis/entityView/entityViewAnalysis.component';
 import { GraphAnalysisComponent }  from './components/entityAnalysis/graph/graphAnalysis.component';
 
 //plugins
 import {SlimLoadingBarModule} from 'ng2-slim-loading-bar'
+
+import { PageNotFoundComponent }  from './components/trivial/PageNotFound.component';
+
 
 
 @NgModule({
@@ -32,9 +40,13 @@ import {SlimLoadingBarModule} from 'ng2-slim-loading-bar'
     DashboardComponent,
     AnalysisNavComponent,
     EntityAnalysisComponent,
+    PayloadExplorerComponent,
+    PayloadStatisticComponent,
+    PayloadFilterComponent,
     EntitySpaceAnalysisComponent,
     EntityViewAnalysisComponent,
-    GraphAnalysisComponent
+    GraphAnalysisComponent,
+    PageNotFoundComponent
   ],
   bootstrap: [ AppComponent ]
 })

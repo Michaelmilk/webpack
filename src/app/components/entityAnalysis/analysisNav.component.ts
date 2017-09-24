@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import * as $ from 'jquery';
 
 import {AnalysisType} from '../../core/enums'
 
@@ -14,5 +15,9 @@ export class AnalysisNavComponent implements OnInit {
 
     ngOnInit() { 
         console.log(this.analysisType);
+    }
+
+    ngAfterViewInit() {
+        (<any>$('[data-toggle="tooltip"]')).tooltip();
     }
 }

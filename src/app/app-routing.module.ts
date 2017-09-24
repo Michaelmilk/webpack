@@ -7,8 +7,14 @@ import { DashboardComponent}  from './components/dashboard/dashboard.component'
 //analysis
 import { EntityAnalysisComponent }  from './components/entityAnalysis/entityAnalysis.component';
 import { EntitySpaceAnalysisComponent } from './components/entityAnalysis/entitySpace/entitySpaceAnalysis.component';
+import { PayloadExplorerComponent } from './components/entityAnalysis/entitySpace/payloadExplorer.component';
+import { PayloadStatisticComponent } from './components/entityAnalysis/entitySpace/payloadStatistic.component';
+import { PayloadFilterComponent } from './components/entityAnalysis/entitySpace/payloadFilter.component';
 import { EntityViewAnalysisComponent }  from './components/entityAnalysis/entityView/entityViewAnalysis.component';
 import { GraphAnalysisComponent }  from './components/entityAnalysis/graph/graphAnalysis.component';
+
+
+import { PageNotFoundComponent }  from './components/trivial/PageNotFound.component';
 
 // import { DashboardComponent }   from './dashboard.component';
 // import { HeroesComponent }      from './heroes.component';
@@ -24,8 +30,9 @@ import { GraphAnalysisComponent }  from './components/entityAnalysis/graph/graph
 let allRoutes: Routes = [];
 
 const dashboardRoutes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'dashboard',  component: DashboardComponent }
+  { path: 'dashboard',  component: DashboardComponent },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
+  //{ path: '**', component: PageNotFoundComponent }
 ];
 
 // const analysisRoutes: Routes = [
@@ -39,15 +46,35 @@ const dashboardRoutes: Routes = [
 const analysisRoutes: Routes = [
   { path: '', redirectTo: '/entityAnalysis', pathMatch: 'full' },
   { path: 'entityAnalysis',  component: EntityAnalysisComponent },
+
+  //entity space
   { path: 'analysis/entitySpace',  component: EntitySpaceAnalysisComponent },
-  { path: 'analysis/entityViewAnalysis', component: EntityViewAnalysisComponent },
-  { path: 'analysis/graphAnalysis',     component: GraphAnalysisComponent }
+  // { path: 'analysis/entitySpace/explorer/:id',  component: PayloadExplorerComponent },
+  // { path: 'analysis/entitySpace/statistic/:id',  component: PayloadStatisticComponent },
+  // { path: 'analysis/entitySpace/filter/:id',  component: PayloadFilterComponent },
+  { path: 'analysis/entitySpace/explorer',  component: PayloadExplorerComponent },
+  { path: 'analysis/entitySpace/statistic',  component: PayloadStatisticComponent },
+  { path: 'analysis/entitySpace/filter',  component: PayloadFilterComponent },
+
+  //entity space
+  { path: 'analysis/entityView', component: EntityViewAnalysisComponent },
+
+  //graph
+  { path: 'analysis/graph',     component: GraphAnalysisComponent }
 ];
 
-allRoutes = allRoutes.concat(dashboardRoutes, analysisRoutes);
+const wildcardRoutes: Routes = [
+  { path: '**', component: PageNotFoundComponent }
+];
+
+allRoutes = allRoutes.concat(dashboardRoutes, analysisRoutes, wildcardRoutes);
 
 @NgModule({
-  imports: [ RouterModule.forRoot(allRoutes) ],
+  imports: [ RouterModule.forRoot(
+    allRoutes,
+    //his outputs each router event that took place during each navigation lifecycle to the browser console
+    //{ enableTracing: true } // <-- debugging purposes only
+  ) ],
   exports: [ RouterModule ]
 })
 export class AppRoutingModule {}

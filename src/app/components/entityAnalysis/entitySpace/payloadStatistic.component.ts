@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'payload-explorer',
-    templateUrl: './payloadExplorer.component.html',
+    selector: 'payload-statistic',
+    templateUrl: './payloadStatistic.component.html',
     //styleUrls: ['./name.component.scss']
 })
-export class PayloadExplorerComponent implements OnInit {
+export class PayloadStatisticComponent implements OnInit {
     constructor() { }
 
     ngOnInit() { }

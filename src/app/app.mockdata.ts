@@ -42,7 +42,7 @@ export let experimentDtos: experimentDto[] = [
         CustomerEnv: "Sources"
     },
     {
-        Id : 1,
+        Id : 4,
         Name: "entitySpace1",
         Type: AnalysisType.EntitySpace,
         CreatedBy: "jixge" ,
@@ -55,7 +55,7 @@ export let experimentDtos: experimentDto[] = [
         CustomerEnv: "Sources"
     },
     {
-        Id : 2,
+        Id : 5,
         Name: "entityView",
         Type: AnalysisType.EntityView,
         CreatedBy: "jixge" ,
@@ -68,7 +68,7 @@ export let experimentDtos: experimentDto[] = [
         CustomerEnv: "Sources"
     },
     {
-        Id : 3,
+        Id : 6,
         Name: "entityGraph",
         Type: AnalysisType.Graph,
         CreatedBy: "jixge" ,
@@ -81,7 +81,7 @@ export let experimentDtos: experimentDto[] = [
         CustomerEnv: "Sources"
     },
     {
-        Id : 1,
+        Id : 7,
         Name: "entitySpace1",
         Type: AnalysisType.EntitySpace,
         CreatedBy: "jixge" ,
@@ -94,7 +94,7 @@ export let experimentDtos: experimentDto[] = [
         CustomerEnv: "Sources"
     },
     {
-        Id : 2,
+        Id : 8,
         Name: "entityView",
         Type: AnalysisType.EntityView,
         CreatedBy: "jixge" ,
@@ -107,7 +107,7 @@ export let experimentDtos: experimentDto[] = [
         CustomerEnv: "Sources"
     },
     {
-        Id : 3,
+        Id : 9,
         Name: "entityGraph",
         Type: AnalysisType.Graph,
         CreatedBy: "jixge" ,
@@ -120,7 +120,7 @@ export let experimentDtos: experimentDto[] = [
         CustomerEnv: "Sources"
     },
     {
-        Id : 1,
+        Id : 10,
         Name: "entitySpace1",
         Type: AnalysisType.EntitySpace,
         CreatedBy: "jixge" ,
@@ -133,7 +133,7 @@ export let experimentDtos: experimentDto[] = [
         CustomerEnv: "Sources"
     },
     {
-        Id : 2,
+        Id : 11,
         Name: "entityView",
         Type: AnalysisType.EntityView,
         CreatedBy: "jixge" ,
@@ -158,7 +158,7 @@ export let experimentDtos: experimentDto[] = [
         CustomerId: "Satori",
         CustomerEnv: "Sources"
     },{
-        Id : 1,
+        Id : 12,
         Name: "entitySpace1",
         Type: AnalysisType.EntitySpace,
         CreatedBy: "jixge" ,
@@ -171,7 +171,7 @@ export let experimentDtos: experimentDto[] = [
         CustomerEnv: "Sources"
     },
     {
-        Id : 2,
+        Id : 13,
         Name: "entityView",
         Type: AnalysisType.EntityView,
         CreatedBy: "jixge" ,
@@ -184,7 +184,7 @@ export let experimentDtos: experimentDto[] = [
         CustomerEnv: "Sources"
     },
     {
-        Id : 3,
+        Id : 14,
         Name: "entityGraph",
         Type: AnalysisType.Graph,
         CreatedBy: "jixge" ,
@@ -197,7 +197,7 @@ export let experimentDtos: experimentDto[] = [
         CustomerEnv: "Sources"
     },
     {
-        Id : 1,
+        Id : 15,
         Name: "entitySpace1",
         Type: AnalysisType.EntitySpace,
         CreatedBy: "jixge" ,
@@ -210,7 +210,7 @@ export let experimentDtos: experimentDto[] = [
         CustomerEnv: "Sources"
     },
     {
-        Id : 2,
+        Id : 16,
         Name: "entityView",
         Type: AnalysisType.EntityView,
         CreatedBy: "jixge" ,
@@ -223,7 +223,7 @@ export let experimentDtos: experimentDto[] = [
         CustomerEnv: "Sources"
     },
     {
-        Id : 3,
+        Id : 17,
         Name: "entityGraph",
         Type: AnalysisType.Graph,
         CreatedBy: "jixge" ,
@@ -236,7 +236,7 @@ export let experimentDtos: experimentDto[] = [
         CustomerEnv: "Sources"
     },
     {
-        Id : 1,
+        Id : 18,
         Name: "entitySpace1",
         Type: AnalysisType.EntitySpace,
         CreatedBy: "jixge" ,
@@ -249,7 +249,7 @@ export let experimentDtos: experimentDto[] = [
         CustomerEnv: "Sources"
     },
     {
-        Id : 2,
+        Id : 19,
         Name: "entityView",
         Type: AnalysisType.EntityView,
         CreatedBy: "jixge" ,
@@ -262,7 +262,7 @@ export let experimentDtos: experimentDto[] = [
         CustomerEnv: "Sources"
     },
     {
-        Id : 3,
+        Id : 20,
         Name: "entityGraph",
         Type: AnalysisType.Graph,
         CreatedBy: "jixge" ,
@@ -275,7 +275,7 @@ export let experimentDtos: experimentDto[] = [
         CustomerEnv: "Sources"
     },
     {
-        Id : 1,
+        Id : 21,
         Name: "entitySpace1",
         Type: AnalysisType.EntitySpace,
         CreatedBy: "jixge" ,
@@ -288,7 +288,7 @@ export let experimentDtos: experimentDto[] = [
         CustomerEnv: "Sources"
     },
     {
-        Id : 2,
+        Id : 22,
         Name: "entityView",
         Type: AnalysisType.EntityView,
         CreatedBy: "jixge" ,
@@ -301,7 +301,7 @@ export let experimentDtos: experimentDto[] = [
         CustomerEnv: "Sources"
     },
     {
-        Id : 3,
+        Id : 23,
         Name: "entityGraph",
         Type: AnalysisType.Graph,
         CreatedBy: "jixge" ,
@@ -314,7 +314,7 @@ export let experimentDtos: experimentDto[] = [
         CustomerEnv: "Sources"
     },
     {
-        Id : 1,
+        Id : 24,
         Name: "entitySpace1",
         Type: AnalysisType.EntitySpace,
         CreatedBy: "jixge" ,
@@ -327,61 +327,9 @@ export let experimentDtos: experimentDto[] = [
         CustomerEnv: "Sources"
     },
     {
-        Id : 2,
+        Id : 25,
         Name: "entityView",
         Type: AnalysisType.EntityView,
-        CreatedBy: "jixge" ,
-        UpdatedBy: "jixge" ,
-        EntitySpaceName: "xingfeed",
-        EntitySpaceUrl: "",
-        EntityViewName: "xingFeedview",
-        EntityViewUrl: "",
-        CustomerId: "Satori",
-        CustomerEnv: "Sources"
-    },
-    {
-        Id : 3,
-        Name: "entityGraph",
-        Type: AnalysisType.Graph,
-        CreatedBy: "jixge" ,
-        UpdatedBy: "jixge" ,
-        EntitySpaceName: "xingfeed",
-        EntitySpaceUrl: "",
-        EntityViewName: "xingFeedview",
-        EntityViewUrl: "",
-        CustomerId: "Satori",
-        CustomerEnv: "Sources"
-    },
-    {
-        Id : 1,
-        Name: "entitySpace1",
-        Type: AnalysisType.EntitySpace,
-        CreatedBy: "jixge" ,
-        UpdatedBy: "jixge" ,
-        EntitySpaceName: "xingfeed",
-        EntitySpaceUrl: "",
-        EntityViewName: "xingFeedview",
-        EntityViewUrl: "",
-        CustomerId: "Satori",
-        CustomerEnv: "Sources"
-    },
-    {
-        Id : 2,
-        Name: "entityView",
-        Type: AnalysisType.EntityView,
-        CreatedBy: "jixge" ,
-        UpdatedBy: "jixge" ,
-        EntitySpaceName: "xingfeed",
-        EntitySpaceUrl: "",
-        EntityViewName: "xingFeedview",
-        EntityViewUrl: "",
-        CustomerId: "Satori",
-        CustomerEnv: "Sources"
-    },
-    {
-        Id : 3,
-        Name: "entityGraph",
-        Type: AnalysisType.Graph,
         CreatedBy: "jixge" ,
         UpdatedBy: "jixge" ,
         EntitySpaceName: "xingfeed",
