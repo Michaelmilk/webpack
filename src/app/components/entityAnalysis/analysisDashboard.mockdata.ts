@@ -1,5 +1,5 @@
-import { ExperimentDto } from "./core/experimentDto"
-import { AnalysisType } from "./core/enums"
+import { ExperimentDto } from "../../core/experimentDto"
+import { AnalysisType } from "../../core/enums"
 
 export let experimentDtos: ExperimentDto[] = [
     new ExperimentDto(
@@ -31,7 +31,7 @@ export let experimentDtos: ExperimentDto[] = [
     new ExperimentDto(
         3,
         "graph",
-        AnalysisType.Graph,
+        AnalysisType.EntityGraph,
         "jixge" ,
         "jixge" ,
         "xingfeed",

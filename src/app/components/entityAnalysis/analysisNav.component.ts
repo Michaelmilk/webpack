@@ -10,7 +10,10 @@ import {AnalysisType} from '../../core/enums'
 })
 export class AnalysisNavComponent implements OnInit {
     @Input()
-    analysisType: AnalysisType
+    analysisType: AnalysisType;
+    @Input()
+    stage: string;
+
     constructor() { }
 
     ngOnInit() { 

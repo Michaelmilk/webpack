@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import {ExperimentDto} from "../../core/experimentDto"
-import { experimentDtos } from '../../app.mockdata'
+//import { experimentDtos } from '../../app.mockdata'
 import { AnalysisType } from '../../core/enums'
 
 @Component({
@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
 
     ngOnInit() { 
         //console.log(experimentDtos);
-        this.experimentDtos = experimentDtos;        
+        //this.experimentDtos = experimentDtos;        
     }
 
     test(){

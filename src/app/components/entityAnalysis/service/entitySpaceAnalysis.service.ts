@@ -5,23 +5,23 @@ import 'rxjs/add/operator/toPromise';
 
 
 import {ExperimentDto} from "../../../core/experimentDto"
+import { EntitySpaceAnalysis } from '../../../core/entityAnalysis/entitySpaceAnalysis'
 
 @Injectable()
-export class HeroService {
-
+export class EntitySpaceAnalysisService {
   private headers = new Headers({'Content-Type': 'application/json'});
   private heroesUrl = 'api/entityspace';  // URL to web api
 
   constructor(private http: Http) { }
 
-  getHeroes(): Promise<ExperimentDto[]> {
+  getExperimentDtos(): Promise<ExperimentDto[]> {
     return this.http.get(this.heroesUrl)
                .toPromise()
                .then(response => response.json().data as ExperimentDto[])
                .catch(this.handleError);
   }
 
-  getHero(id: number): Promise<ExperimentDto> {
+  getEntitySpaceAnalysis(id: number): Promise<EntitySpaceAnalysis> {
     const url = `${this.heroesUrl}/${id}`;
     return this.http.get(url)
       .toPromise()
