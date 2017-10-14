@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
-import {ExperimentDto} from "../../core/experimentDto"
-import { experimentDtos } from '../../app.mockdata'
-import { AnalysisType } from '../../core/enums'
+import {ExperimentDto} from "../../../core/experimentDto"
+import { experimentDtos } from '../../../app.mockdata'
+import { AnalysisType } from '../../../core/enums'
 
 @Component({
     selector: 'selector',
     templateUrl: './dashboard.component.html',
     //styleUrls: ['./name.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class AnalysisDashboardComponent implements OnInit {
     experimentDtos: Array<ExperimentDto>;
     AnalysisType: typeof AnalysisType = AnalysisType;
     constructor() { }
