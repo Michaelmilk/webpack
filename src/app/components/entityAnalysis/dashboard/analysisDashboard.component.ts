@@ -4,8 +4,10 @@ import { Router } from '@angular/router';
 import { ExperimentDto } from "../../../core/experimentDto"
 import { experimentDtos } from '../analysisDashboard.mockdata'
 import { AnalysisType } from '../../../core/enums'
+import { EntitySpaceAnalysis } from '../../../core/entityAnalysis/entitySpaceAnalysis'
 
 import { EntitySpaceAnalysisService } from '../service/entitySpaceAnalysis.service'
+import { AnalysisDashboardService } from '../service/analysisDashboard.service'
 
 @Component({
     selector: 'analysis-dashboard',
@@ -14,18 +16,49 @@ import { EntitySpaceAnalysisService } from '../service/entitySpaceAnalysis.servi
 })
 
 export class AnalysisDashboardComponent implements OnInit {
-    experimentDtos: Array<ExperimentDto>;
+    entityAnalysisDtos: any;
     AnalysisType: typeof AnalysisType = AnalysisType;
     selectedExperiment: ExperimentDto;
+    currentAnalysisType: AnalysisType;
 
     constructor(
         private router: Router,
-        private entitySpaceAnalysisService: EntitySpaceAnalysisService
+        private analysisDashboardService: AnalysisDashboardService
     ) { }
 
     ngOnInit() { 
-        //console.log(experimentDtos);
-        this.experimentDtos = experimentDtos;        
+        let currentUrl = this.router.url;
+        console.log(currentUrl);
+        let pos = currentUrl.lastIndexOf('/');
+        let analysisTypeStr = currentUrl.substr(pos + 1);
+
+        console.log(analysisTypeStr);
+        
+        this.currentAnalysisType = this.getCurrentAnalysisType(analysisTypeStr);
+        console.log(this.currentAnalysisType);
+        
+        //console.log(experimentDtos); 
+        this.analysisDashboardService.getEntitySpaceAnalysisDtos()
+            .subscribe((response) => {
+                console.log(response);
+                this.entityAnalysisDtos = <EntitySpaceAnalysis[]>response;
+                console.log("entityAnalysisDtos", this.entityAnalysisDtos);
+                return this.entityAnalysisDtos;
+            });
+    }
+
+    getCurrentAnalysisType(analysisTypeStr: string): AnalysisType{
+        switch(analysisTypeStr) { 
+            case "entityspace": { 
+               return AnalysisType.EntitySpace;
+            } 
+            case "entityview": { 
+                return AnalysisType.EntitySpace;
+            } 
+            case "entitygraph": { 
+               return AnalysisType.EntitySpace;
+            }
+        } 
     }
 
     gotoEntityAnalysisDetail(){

@@ -45,7 +45,7 @@ allRoutes = allRoutes.concat(dashboardRoutes, wildcardRoutes);
   imports: [ RouterModule.forRoot(
     allRoutes,
     //his outputs each router event that took place during each navigation lifecycle to the browser console
-    { enableTracing: true } // <-- debugging purposes only
+    //{ enableTracing: true } // <-- debugging purposes only
   ) ],
   exports: [ RouterModule ]
 })

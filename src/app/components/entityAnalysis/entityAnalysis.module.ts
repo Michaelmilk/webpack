@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';//ngModel
-
+import { HttpModule } from '@angular/http';
 //routes
 import { EntityAnalysisRoutingModule } from './entityAnalysis-routing.module';
 
@@ -18,10 +18,13 @@ import { PayloadFilterComponent } from './entitySpace/payloadFilter.component';
 import { EntityViewAnalysisComponent }  from './entityView/entityViewAnalysis.component';
 import { EntityGraphAnalysisComponent }  from './entityGraph/entityGraphAnalysis.component';
 
+import { AnalysisDashboardService } from './service/analysisDashboard.service'
 
 @NgModule({
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpModule,
     EntityAnalysisRoutingModule,
     SlimLoadingBarModule.forRoot()
   ],
@@ -35,6 +38,9 @@ import { EntityGraphAnalysisComponent }  from './entityGraph/entityGraphAnalysis
     PayloadExplorerComponent,
     PayloadStatisticComponent,
     PayloadFilterComponent
+  ],
+  providers: [
+    AnalysisDashboardService
   ]
 })
 

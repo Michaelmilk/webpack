@@ -1,4 +1,4 @@
-export class AnalysisBase{
+export class EntityAnalysis{
     constructor(
         public id: number,
         public name: string,
@@ -6,6 +6,8 @@ export class AnalysisBase{
         public createdTime: string,
         public updatedBy: string,
         public updatedTime: string,
+        public customerId: string,
+        public customerEnv: string
     )
     {}
 }

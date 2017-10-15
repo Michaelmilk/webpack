@@ -1,6 +1,6 @@
-import { EntityAnalysis } from "./entityAnalysis"
+import { EntityAnalysis } from "./entityAnalysis";
 
-export class EntityViewAnalysis extends EntityAnalysis{
+export class GraphAnalysis extends EntityAnalysis{
     constructor(
         public id: number,
         public name: string,
@@ -9,9 +9,7 @@ export class EntityViewAnalysis extends EntityAnalysis{
         public updatedBy: string,
         public updatedTime: string,
         public customerId: string,
-        public customerEnv: string,
-        public entityViewName: string,
-        public entityViewVersion: string,
+        public customerEnv: string
     )
     {
         super(id, name, createdBy, createdTime, updatedBy, updatedTime, customerId, customerEnv);

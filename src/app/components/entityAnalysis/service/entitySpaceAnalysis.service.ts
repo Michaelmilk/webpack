@@ -10,11 +10,11 @@ import { EntitySpaceAnalysis } from '../../../core/entityAnalysis/entitySpaceAna
 @Injectable()
 export class EntitySpaceAnalysisService {
   private headers = new Headers({'Content-Type': 'application/json'});
-  private heroesUrl = 'api/entityspace';  // URL to web api
+  private heroesUrl = 'api/entityspaceanalysis';  // URL to web api
 
   constructor(private http: Http) { }
 
-  getExperimentDtos(): Promise<ExperimentDto[]> {
+  getEntitySpaceAnalysisDtos(): Promise<ExperimentDto[]> {
     return this.http.get(this.heroesUrl)
                .toPromise()
                .then(response => response.json().data as ExperimentDto[])

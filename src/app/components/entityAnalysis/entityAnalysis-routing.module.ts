@@ -30,9 +30,30 @@ const analysisRoutes: Routes = [
         path: 'dashboard',
         component: AnalysisDashboardComponent
       },
-      { path: 'entityspace/:id/explorer',  component: PayloadExplorerComponent },
-      { path: 'entityspace/:id/statistic',  component: PayloadStatisticComponent },
-      { path: 'entityspace/:id/filter',  component: PayloadFilterComponent },
+      {
+        path: 'entityspace',
+        component: AnalysisDashboardComponent
+      },
+      {
+        path: 'entityview',
+        component: AnalysisDashboardComponent
+      },
+      {
+        path: 'entitygraph',
+        component: AnalysisDashboardComponent
+      },
+      {
+        path: 'entityspace/:id/explorer', 
+        component: PayloadExplorerComponent 
+      },
+      {
+        path: 'entityspace/:id/statistic', 
+        component: PayloadStatisticComponent 
+      },
+      { 
+        path: 'entityspace/:id/filter',  
+        component: PayloadFilterComponent 
+      },
       //{
         // path: 'entityspace',
         // component: EntitySpaceAnalysisComponent,

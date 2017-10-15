@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EntitySpaceAnalysis } from '../../../core/entityAnalysis/entitySpaceAnalysis'
 
 @Component({
     selector: 'graph-analysis',
