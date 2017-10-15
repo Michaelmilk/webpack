@@ -54,16 +54,16 @@ const analysisRoutes: Routes = [
   }
 ];
 
-const wildcardRoutes: Routes = [
-  { path: '**', component: PageNotFoundComponent }
-];
+// const wildcardRoutes: Routes = [
+//   { path: '**', component: PageNotFoundComponent }
+// ];
 
-allRoutes = allRoutes.concat(analysisRoutes, wildcardRoutes);
+// allRoutes = allRoutes.concat(analysisRoutes, wildcardRoutes);
 
 @NgModule({
   imports: [ 
     RouterModule.forChild(
-    allRoutes,
+      analysisRoutes,
     //his outputs each router event that took place during each navigation lifecycle to the browser console
     //{ enableTracing: true } // <-- debugging purposes only
     ) 

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule }  from '@angular/platform-browser';
-import { FormsModule }    from '@angular/forms';//ngModel
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';//ngModel
 
 //routes
 import { EntityAnalysisRoutingModule } from './entityAnalysis-routing.module';

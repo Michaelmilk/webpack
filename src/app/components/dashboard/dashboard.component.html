@@ -1,39 +1,4 @@
 <div>
     <h3>Dashboard</h3>
-    <div>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th class="text-center">Id</th>
-                    <th class="text-center">Name</th>
-                    <th class="text-center">Type</th>
-                    <th class="text-center">CreatedBy</th>
-                    <th class="text-center">UpdatedBy</th>
-                    <th class="text-center">Actions</th>
-                </tr>
-            </thead>
-            <tbody *ngFor="let experimentDto of experimentDtos">
-                <tr>
-                    <td class="text-center" [innerHtml]=experimentDto.id></td>
-                    <td class="text-center">
-                        <a routerLink="/analysis/entitySpace"  [innerHtml]=experimentDto.name></a>
-                    </td>
-                    <td class="text-center" [innerHtml]=AnalysisType[experimentDto.type]></td>
-                    <td class="text-center" [innerHtml]=experimentDto.createdBy></td>
-                    <td class="text-center" [innerHtml]=experimentDto.createdTime></td>
-                    <td class="text-center">
-                        Delete | Clone
-                    </td>
-                </tr>
-                <tr [hidden]="!collapseDetails">
-                    <td>560001</td>        
-                    <td>Bangalore</td>
-                    <td>560001</td>
-                    <td>560001</td>
-                    <td>560001</td>
-                    <td>560001</td>           
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    
 </div>
