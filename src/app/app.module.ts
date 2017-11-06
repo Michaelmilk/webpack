@@ -12,6 +12,7 @@ import { DashboardComponent} from './components/dashboard/dashboard.component'
 
 //child module
 import { EntityAnalysisModule } from './components/entityAnalysis/entityAnalysis.module'
+import { ReportModule } from './components/report/report.module'
 import { TriageModule } from './components/triage/triage.module'
 
 //plugins
@@ -26,6 +27,7 @@ import { PageNotFoundComponent } from './components/trivial/pageNotFound.compone
     BrowserModule,
     EntityAnalysisModule,
     TriageModule,
+    ReportModule,
     AppRoutingModule,
     SlimLoadingBarModule.forRoot()
   ],

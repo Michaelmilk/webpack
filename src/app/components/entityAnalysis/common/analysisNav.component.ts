@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import * as $ from 'jquery';
 
-import {AnalysisType} from '../../core/enums'
+import {AnalysisType} from '../../../core/enums'
 
 @Component({
     selector: 'analysis-nav',

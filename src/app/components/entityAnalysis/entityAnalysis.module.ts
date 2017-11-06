@@ -8,7 +8,7 @@ import { EntityAnalysisRoutingModule } from './entityAnalysis-routing.module';
 //plugin
 import {SlimLoadingBarModule} from 'ng2-slim-loading-bar'
 
-import { AnalysisNavComponent }  from './analysisNav.component';
+import { AnalysisNavComponent }  from './common/analysisNav.component';
 import { AnalysisDashboardComponent } from './dashboard/analysisDashboard.component'
 import { EntityAnalysisComponent } from './entityAnalysis.component'
 // import { EntitySpaceAnalysisComponent } from './entitySpace/entitySpaceAnalysis.component';
