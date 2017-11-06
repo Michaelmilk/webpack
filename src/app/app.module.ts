@@ -12,6 +12,7 @@ import { DashboardComponent} from './components/dashboard/dashboard.component'
 
 //child module
 import { EntityAnalysisModule } from './components/entityAnalysis/entityAnalysis.module'
+import { TriageModule } from './components/triage/triage.module'
 
 //plugins
 import {SlimLoadingBarModule} from 'ng2-slim-loading-bar'
@@ -24,6 +25,7 @@ import { PageNotFoundComponent } from './components/trivial/pageNotFound.compone
   imports: [
     BrowserModule,
     EntityAnalysisModule,
+    TriageModule,
     AppRoutingModule,
     SlimLoadingBarModule.forRoot()
   ],
