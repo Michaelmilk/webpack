@@ -1,6 +1,28 @@
 <h3>Triage page</h3>
 <div class="container-fluid">
     <h1>EntityView Name</h1>
+    <!-- submit form -->
+    <form #triageInputForm="ngForm">
+        <!-- <div class="form-group">
+            <label for="Customer Environment">Customer Environment</label>
+            <input type="text" class="form-control" id="customerEnvironment" required [(ngModel)]="customerEnvironment" name="customerEnvironment" #spy>
+        </div>
+        <br>TODO: remove this: {{spy.className}} -->
+
+        <div class="form-group">
+            <label for="Customer Environment">Customer Environment</label>
+            <input type="text" class="form-control" id="customerEnvironment" required [(ngModel)]="customerEnvironment" name="customerEnvironment">
+        </div>
+
+        <div class="form-group">
+            <label for="Entityspace View">Entityspace View</label>
+            <input type="text" class="form-control" id="entitySpaceView" required [(ngModel)]="customerEnvironment" name="entitySpaceView">
+        </div>
+    </form>
+
+
+    <input class="form-control" id="entitySpaceView"  [(ngModel)]="customerEnvironment" name="entitySpaceView">
+    <!-- data display -->
     <div class="panel panel-default">
         <div class="panel-heading">EntitySpace View Meta</div>
         <div class="panel-body">

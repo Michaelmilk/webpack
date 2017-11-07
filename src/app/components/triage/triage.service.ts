@@ -15,7 +15,10 @@ export class TriageService {
     constructor(private http: Http) { }
 
     getEntitySpaceView(){
-
+        return this.http.get(this.heroesUrl)
+                .toPromise()
+                .then(response => response.json().data as ExperimentDto[])
+                .catch(this.handleError);
     }
 
     // getEntitySpaceAnalysisDtos(): Promise<ExperimentDto[]> {
