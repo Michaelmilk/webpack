@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class TriageComponent implements OnInit {
     customerEnvironment: string;
-    entitySpaceViewName: string;
+    customerEnvironment: string;
 
     constructor() { }
 
