@@ -3,6 +3,7 @@ import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
+import {EntitySpaceView} from "../../core/triage/entitySpaceView";
 
 // import {ExperimentDto} from "../../../core/experimentDto"
 // import { EntitySpaceAnalysis } from '../../../core/entityAnalysis/entitySpaceAnalysis'
@@ -10,15 +11,13 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class TriageService {
     private headers = new Headers({ 'Content-Type': 'application/json' });
-    private heroesUrl = 'api/entityspaceanalysis';  // URL to web api
+    private entitySpaceViewUrl = 'api/entityspaceanalysis';  // URL to web api
 
     constructor(private http: Http) { }
 
     getEntitySpaceView(){
-        return this.http.get(this.heroesUrl)
-                .toPromise()
-                .then(response => response.json().data as ExperimentDto[])
-                .catch(this.handleError);
+        return this.http.get(this.entitySpaceViewUrl).map((response) => response.json());
+        
     }
 
     // getEntitySpaceAnalysisDtos(): Promise<ExperimentDto[]> {

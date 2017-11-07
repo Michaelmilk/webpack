@@ -2,14 +2,14 @@ import { EntityAnalysis } from "./entityAnalysis";
 
 export class GraphAnalysis extends EntityAnalysis{
     constructor(
-        public id: number,
-        public name: string,
-        public createdBy: string,
-        public createdTime: string,
-        public updatedBy: string,
-        public updatedTime: string,
-        public customerId: string,
-        public customerEnv: string
+        id: number,
+        name: string,
+        createdBy: string,
+        createdTime: string,
+        updatedBy: string,
+        updatedTime: string,
+        customerId: string,
+        customerEnv: string
     )
     {
         super(id, name, createdBy, createdTime, updatedBy, updatedTime, customerId, customerEnv);

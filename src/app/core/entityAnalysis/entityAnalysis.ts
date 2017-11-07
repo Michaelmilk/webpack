@@ -7,7 +7,8 @@ export class EntityAnalysis{
         public updatedBy: string,
         public updatedTime: string,
         public customerId: string,
-        public customerEnv: string
+        public customerEnv: string,
+        public nameWithVersion?: string,
     )
     {}
 }

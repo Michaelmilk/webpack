@@ -2,26 +2,60 @@
 <div class="container-fluid">
     <h1>EntityView Name</h1>
     <!-- submit form -->
-    <form #triageInputForm="ngForm">
-        <!-- <div class="form-group">
-            <label for="Customer Environment">Customer Environment</label>
-            <input type="text" class="form-control" id="customerEnvironment" required [(ngModel)]="customerEnvironment" name="customerEnvironment" #spy>
-        </div>
-        <br>TODO: remove this: {{spy.className}} -->
-
+    <!-- <form class="form-inline form-horizontal" #triageInputForm="ngForm">
         <div class="form-group">
             <label for="Customer Environment">Customer Environment</label>
+            <input type="text" class="form-control" id="customerEnvironment" required [(ngModel)]="customerEnvironment" name="customerEnvironment"
+                #spy>
+        </div>
+        <br>TODO: remove this: {{spy.className}}
+
+        <div class="form-group">
+            <label for="Customer Environment" class="col-sm-6 control-label">Customer Environment:</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="customerEnvironment" required [(ngModel)]="customerEnvironment" name="customerEnvironment">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Entityspace View" class="col-sm-6 control-label">Entityspace View:</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="entitySpaceView" required [(ngModel)]="customerEnvironment" name="entitySpaceView">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-6">
+            </div>
+            <div class="col-sm-6">
+                <button class="btn btn-primary">Load</button>
+            </div>
+        </div>
+    </form> -->
+
+    <form class="form-inline" (ngSubmit)="loadEntitySpaceView()" #triageInputForm="ngForm">
+        <!-- <div class="form-group">
+                <label for="Customer Environment">Customer Environment</label>
+                <input type="text" class="form-control" id="customerEnvironment" required [(ngModel)]="customerEnvironment" name="customerEnvironment" #spy>
+            </div>
+            <br>TODO: remove this: {{spy.className}} -->
+
+        <div class="form-group">
+            <label for="Customer Environment">Customer Environment:</label>
             <input type="text" class="form-control" id="customerEnvironment" required [(ngModel)]="customerEnvironment" name="customerEnvironment">
         </div>
 
-        <div class="form-group">
-            <label for="Entityspace View">Entityspace View</label>
-            <input type="text" class="form-control" id="entitySpaceView" required [(ngModel)]="customerEnvironment" name="entitySpaceView">
+        <div class="form-group" style="margin-left: 15px;">
+            <label for="Entityspace View">Entityspace View:</label>
+            <input type="text" class="form-control" id="entitySpaceView" required [(ngModel)]="entitySpaceViewName" name="entitySpaceView">
+
         </div>
+
+        <button type="submit" class="btn btn-primary" style="margin-left: 15px;" [disabled]="!triageInputForm.form.valid">Load</button>
     </form>
 
+    <br/>
 
-    <input class="form-control" id="entitySpaceView"  [(ngModel)]="customerEnvironment" name="entitySpaceView">
     <!-- data display -->
     <div class="panel panel-default">
         <div class="panel-heading">EntitySpace View Meta</div>
