@@ -57,39 +57,142 @@
     <br/>
 
     <!-- data display -->
-    <div class="panel panel-default">
+    <!-- <div class="panel panel-default">
         <div class="panel-heading">EntitySpace View Meta</div>
         <div class="panel-body">
-            <p>这是一个基本的面板内容。这是一个基本的面板内容。 这是一个基本的面板内容。这是一个基本的面板内容。 这是一个基本的面板内容。这是一个基本的面板内容。 这是一个基本的面板内容。这是一个基本的面板内容。
-            </p>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>
+                            <label>View Key: </label>
+                            <b class="text-primary">XingFeed_XingFeedView</b>
+                        </td>
+                        <td>
+                            <label>Name: </label>
+                            <b>XingFeedView</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>CreatedBy: </label>
+                            <b>xihcai</b>
+                        </td>
+                        <td>
+                            <label>EntitySpaceName: </label>
+                            <b>XingFeed</b>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <ul class="list-group">
-            <li class="list-group-item">免费域名注册</li>
-            <li class="list-group-item">免费 Window 空间托管</li>
-            <li class="list-group-item">图像的数量</li>
-            <li class="list-group-item">24*7 支持</li>
-            <li class="list-group-item">每年更新成本</li>
-        </ul>
-    </div>
-    <div class="">
+    </div> -->
+
+    <!-- meta data of standard and triage view -->
+    <div>
         <div class="col-sm-6" style="padding:0;">
             <div class="panel panel-success">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Last normal view</h3>
+                    <b style="margin-right: 20px">Standard:</b>
+                    <div class="btn-group btn-group-sm">
+                        <button type="button" class="btn btn-success">Button 4</button>
+                        <button type="button" class="btn btn-default">Button 5</button>
+                        <button type="button" class="btn btn-default">Button 6</button>
+                        <button type="button" class="btn btn-default">Button 6</button>
+                    </div>
                 </div>
                 <div class="panel-body">
-                    这是一个基本的面板
+                    <!-- statistic of triage info -->
+                    <div>
+
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-sm-6" style="padding:0;">
-            <div class="panel panel-warning">
+            <div class="panel panel-danger">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Triage view</h3>
+                    <b style="margin-right: 20px">Triage:</b>
+                    <div class="btn-group btn-group-sm">
+                        <button type="button" class="btn btn-danger">Button 4</button>
+                        <button type="button" class="btn btn-info">Button 5</button>
+                        <button type="button" class="btn btn-info">Button 6</button>
+                        <button type="button" class="btn btn-info">Button 6</button>
+                    </div>
                 </div>
                 <div class="panel-body">
-                    这是一个基本的面板
+                    <!-- statistic of triage info -->
+                    <div>
+
+                    </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- triage side by side -->
+    <div class="">
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a data-toggle="tab" href="#home">Deleted</a>
+            </li>
+            <li>
+                <a data-toggle="tab" href="#menu1">Churn</a>
+            </li>
+            <li>
+                <a data-toggle="tab" href="#menu2">Added</a>
+            </li>
+            <li>
+                <a data-toggle="tab" href="#menu3">Menu 3</a>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu 10
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a data-toggle="tab" href="#1">Submenu 1-1</a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#2">Submenu 1-2</a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#3">Submenu 1-3</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+                <h3>HOME</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                    magna aliqua.</p>
+            </div>
+            <div id="menu1" class="tab-pane fade">
+                <h3>Menu 1</h3>
+                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <div id="menu2" class="tab-pane fade">
+                <h3>Menu 2</h3>
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
+                    aperiam.
+                </p>
+            </div>
+            <div id="menu3" class="tab-pane fade">
+                <h3>Menu 3</h3>
+                <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            </div>
+            <div id="1" class="tab-pane fade">
+                <h3>Menu 1</h3>
+                <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            </div>
+            <div id="2" class="tab-pane fade">
+                <h3>Menu 2</h3>
+                <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            </div>
+            <div id="3" class="tab-pane fade">
+                <h3>Menu 3</h3>
+                <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
             </div>
         </div>
     </div>
