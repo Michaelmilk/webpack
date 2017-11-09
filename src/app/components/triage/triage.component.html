@@ -42,12 +42,12 @@
 
         <div class="form-group">
             <label for="Customer Environment">Customer Environment:</label>
-            <input type="text" class="form-control" id="customerEnvironment" required [(ngModel)]="customerEnvironment" name="customerEnvironment">
+            <input type="text" class="form-control" id="customerEnvironment" required [(ngModel)]="customerIdEnvironment" name="customerEnvironment">
         </div>
 
         <div class="form-group" style="margin-left: 15px;">
             <label for="Entityspace View">Entityspace View:</label>
-            <input type="text" class="form-control" id="entitySpaceView" required [(ngModel)]="entitySpaceViewName" name="entitySpaceView">
+            <input type="text" class="form-control" id="entitySpaceView" required [(ngModel)]="entitySpaceViewKey" name="entitySpaceView">
 
         </div>
 
@@ -132,11 +132,40 @@
     <!-- triage side by side -->
     <div class="">
         <ul class="nav nav-tabs">
-            <li class="active">
-                <a data-toggle="tab" href="#home">Deleted</a>
+            <li class="dropdown active">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Deleted
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="active">
+                        <a data-toggle="tab" href="#deletedEntity">Entity</a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#deletedProperty">Property</a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#deletedValue">Value</a>
+                    </li>
+                </ul>
             </li>
             <li>
                 <a data-toggle="tab" href="#menu1">Churn</a>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Added
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a data-toggle="tab" href="#deletedEntity">Entity</a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#deletedProperty">Property</a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#deletedValue">Value</a>
+                    </li>
+                </ul>
             </li>
             <li>
                 <a data-toggle="tab" href="#menu2">Added</a>
@@ -144,26 +173,10 @@
             <li>
                 <a data-toggle="tab" href="#menu3">Menu 3</a>
             </li>
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu 10
-                    <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a data-toggle="tab" href="#1">Submenu 1-1</a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#2">Submenu 1-2</a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#3">Submenu 1-3</a>
-                    </li>
-                </ul>
-            </li>
         </ul>
 
         <div class="tab-content">
-            <div id="home" class="tab-pane fade in active">
+            <div id="home" class="tab-pane fade">
                 <h3>HOME</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
                     magna aliqua.</p>
@@ -182,16 +195,16 @@
                 <h3>Menu 3</h3>
                 <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
             </div>
-            <div id="1" class="tab-pane fade">
-                <h3>Menu 1</h3>
+            <div id="deletedEntity" class="tab-pane fade in active">
+                <h3>deletedEntity</h3>
                 <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
             </div>
-            <div id="2" class="tab-pane fade">
-                <h3>Menu 2</h3>
+            <div id="deletedProperty" class="tab-pane fade">
+                <h3>deletedProperty</h3>
                 <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
             </div>
-            <div id="3" class="tab-pane fade">
-                <h3>Menu 3</h3>
+            <div id="deletedValue" class="tab-pane fade">
+                <h3>deletedValue</h3>
                 <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
             </div>
         </div>
