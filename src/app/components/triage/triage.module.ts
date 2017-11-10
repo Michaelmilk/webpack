@@ -4,7 +4,10 @@ import { FormsModule } from '@angular/forms';//ngModel
 import { HttpModule } from '@angular/http';
 //routes
 import { TriageRoutingModule } from './triage-routing.module';
+
+//component
 import { TriageComponent } from './triage.component';
+import { JobPanelComponent } from '../common/jobPanel/jobPanel.component'
 
 //plugin
 import {SlimLoadingBarModule} from 'ng2-slim-loading-bar'
@@ -19,7 +22,8 @@ import {SlimLoadingBarModule} from 'ng2-slim-loading-bar'
     SlimLoadingBarModule.forRoot()
   ],
   declarations: [
-    TriageComponent
+    TriageComponent,
+    JobPanelComponent
   ],
   providers: [
     

@@ -1,0 +1,99 @@
+<div class="panel panel-section">
+    <div>
+        <div style="margin-bottom: 10px;">
+            <label class="checkbox-inline"
+                   *ngIf="job.id != -1">
+                <input type="checkbox" [(ngModel)]="isAutoRefresh" (click)="autoRefreshJobState()">Auto refresh job state
+            </label>
+        </div>
+        <div>
+            <button class="btn btn-main"
+                    (click)="!isRunning ? submit() : cancel()">
+                <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="isSubmiting || isCanceling"></i>
+                <span class="sr-only">Loading...</span>
+                <span *ngIf="!isRunning">Submit {{buttonText}}</span>
+                <span *ngIf="isRunning">Cancel {{buttonText}}</span>
+            </button>
+            <button class="btn btn-main"
+                    *ngIf="isRunning && job.id != -1 && !isAutoRefresh"
+                    [disabled]="isRefreshing"
+                    (click)="refreshJobState()">
+                <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="isRefreshing"></i>
+                <span class="sr-only">Loading...</span>
+                Refresh Job State
+            </button>
+        </div>
+    </div>
+    <br />
+    <div *ngIf="job.aetherId">
+        <div class="panel panel-info">
+            <div class="panel-heading flex justify-content-sapce-between">
+                <strong>
+                    <a target="_blank" href="aether://experiments/{{job.aetherId}}" ng-bind="'aether://experiments/'+job.aetherId"></a>
+                </strong>
+                <div [ngSwitch]="job.status">
+                    <div *ngSwitchCase="7">
+                        <b class="text-primary" ng-bind="'Queuing'"></b>
+                    </div>
+                    <div *ngSwitchCase="0">
+                        <b class="text-primary" ng-bind="'Queuing'"></b>
+                    </div>
+                    <div *ngSwitchCase="1">
+                        <b class="text-primary" ng-bind="'Running'"></b>
+                    </div>
+                    <div *ngSwitchCase="2">
+                        <b class="text-primary" ng-bind="'Succeed'"></b>
+                    </div>
+                    <div *ngSwitchCase="3">
+                        <b class="text-primary" ng-bind="'Failed'"></b>
+                    </div>
+                    <div *ngSwitchCase="5">
+                        <b class="text-primary" ng-bind="'Canceled'"></b>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div>
+                    <strong>
+                        <a target="_blank" href="{{job.url}}" ng-bind="job.url"></a>
+                    </strong>
+                </div>
+                <br />
+                <div class="progress" style="margin-bottom: 0"
+                     *ngIf="job.completePercent != 0">
+                    <div class="progress-bar progress-bar-success"
+                         role="progressbar"
+                         aria-valuenow="40"
+                         aria-valuemin="0"
+                         aria-valuemax="100"
+                         ng-style="{width: job.completePercent + '%'}">
+                        {{job.completePercent}}%
+                    </div>
+                </div>
+                <br />
+                <div class="flex" *ngIf="jobState">
+                    <div style="margin-right: 20px">
+                        <i class="fa fa-square text-info"></i>
+                        SubmitTime: {{job.submitTime}}
+                    </div>
+                    <div style="margin-right: 20px">
+                        <i class="fa fa-square text-primary"></i>
+                        StartTime: {{job.startTime}}
+                    </div>
+                    <div style="margin-right: 20px">
+                        <i class="fa fa-square text-success"></i>
+                        EndTime: {{job.endTime}}
+                    </div>
+                    <div style="margin-right: 20px">
+                        <i class="fa fa-square text-warning"></i>
+                        TotalQueuedTime: {{job.queueTime}}
+                    </div>
+                    <div style="margin-right: 20px">
+                        <i class="fa fa-square text-danger"></i>
+                        TotalRunningTime: {{job.runningTime}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
