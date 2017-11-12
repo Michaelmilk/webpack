@@ -9,10 +9,8 @@ import {AnalysisType} from '../../../core/enums'
     styleUrls: ['./analysisNav.component.css']
 })
 export class AnalysisNavComponent implements OnInit {
-    @Input()
-    analysisType: AnalysisType;
-    @Input()
-    stage: string;
+    @Input() analysisType: AnalysisType;
+    @Input() stage: string;
 
     constructor() { }
 

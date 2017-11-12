@@ -1,10 +1,10 @@
 export enum JobStatus
 {
-    Waiting = 0,
-    Running = 1,
-    Succeeded = 2,
-    Failed = 3,
-    TimeOut = 4,
+    UnKnown = 0,
+    Waiting = 1,
+    Running = 2,
+    Succeeded = 3,
+    Failed = 4,
     Canceled = 5,
-    UnKnown = 6
+    TimeOut = 6
 }

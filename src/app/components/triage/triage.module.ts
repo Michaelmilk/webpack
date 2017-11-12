@@ -7,7 +7,7 @@ import { TriageRoutingModule } from './triage-routing.module';
 
 //component
 import { TriageComponent } from './triage.component';
-import { JobPanelComponent } from '../common/jobPanel/jobPanel.component'
+import { JobPanelComponent } from '../../directives/jobPanel/jobPanel.component'
 
 //plugin
 import {SlimLoadingBarModule} from 'ng2-slim-loading-bar'

@@ -132,7 +132,7 @@
     </div>
 
     <div>
-        <job-panel></job-panel>
+        <job-panel [jobType]="JobType.Triage" (submitJob)="submitTriageJob()" (getJobState)="getTriageJobState()" (cancelJob)="cancelTriageJob()"></job-panel>
     </div>
 
 

@@ -7,14 +7,14 @@
             </label>
         </div>
         <div>
-            <button class="btn btn-main"
+            <button class="btn btn-primary"
                     (click)="!isRunning ? submit() : cancel()">
                 <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="isSubmiting || isCanceling"></i>
                 <span class="sr-only">Loading...</span>
-                <span *ngIf="!isRunning">Submit {{buttonText}}</span>
-                <span *ngIf="isRunning">Cancel {{buttonText}}</span>
+                <span *ngIf="!isRunning">Submit {{jobText}}</span>
+                <span *ngIf="isRunning">Cancel {{jobText}}</span>
             </button>
-            <button class="btn btn-main"
+            <button class="btn btn-primary"
                     *ngIf="isRunning && job.id != -1 && !isAutoRefresh"
                     [disabled]="isRefreshing"
                     (click)="refreshJobState()">
@@ -86,11 +86,11 @@
                     </div>
                     <div style="margin-right: 20px">
                         <i class="fa fa-square text-warning"></i>
-                        TotalQueuedTime: {{job.queueTime}}
+                        QueuedTime: {{job.queueTime}}
                     </div>
                     <div style="margin-right: 20px">
                         <i class="fa fa-square text-danger"></i>
-                        TotalRunningTime: {{job.runningTime}}
+                        RunningTime: {{job.runningTime}}
                     </div>
                 </div>
             </div>
