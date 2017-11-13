@@ -3,7 +3,7 @@ import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import {EntitySpaceView} from "../../core/triage/entitySpaceView";
+import {EntityView} from "../../core/triage/entitySpaceView";
 
 // import {ExperimentDto} from "../../../core/experimentDto"
 // import { EntitySpaceAnalysis } from '../../../core/entityAnalysis/entitySpaceAnalysis'

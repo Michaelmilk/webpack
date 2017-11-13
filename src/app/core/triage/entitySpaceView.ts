@@ -15,7 +15,7 @@ export class MappingSetting{
     ){}
 }
 
-export class EntitySpaceViewVersion{
+export class EntityViewVersion{
     // public _viewStreamPath: string;
     // public _entitySpaceStreamPath: string;
 
@@ -47,7 +47,7 @@ export class EntitySpaceViewVersion{
     }
 }
 
-export class EntitySpaceView{
+export class EntityView{
     constructor(
         public viewKey: string,
         public customerId: string,
@@ -60,7 +60,7 @@ export class EntitySpaceView{
         public createdTime?: string,
         public updatedBy?: string,
         public updatedTime?: string,
-        public entitySpaceViewVersion?: EntitySpaceViewVersion,
+        public entitySpaceViewVersion?: EntityViewVersion,
         public entitySpaceUrl?: string,
         public entitySpaceStreamPath?: string,
         public entitySpaceDebugStreamFolder?: string,

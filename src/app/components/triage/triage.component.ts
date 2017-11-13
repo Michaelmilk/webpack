@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { EntitySpaceView } from '../../core/triage/entitySpaceView';
+import { EntityView } from '../../core/triage/entitySpaceView';
 import{ BaseComponent } from '../common/base.component'
 
 @Component({
@@ -11,8 +11,8 @@ import{ BaseComponent } from '../common/base.component'
 
 export class TriageComponent extends BaseComponent implements OnInit {
     customerIdEnvironment: string;
-    entitySpaceViewKey: string;
-    entitySpaceView: EntitySpaceView;
+    entityViewKey: string;
+    entityView: EntityView;
 
     constructor() {
         super();
@@ -29,12 +29,12 @@ export class TriageComponent extends BaseComponent implements OnInit {
         if (params.length >= 2) {
             let customerId: string = params[0];
             let customerEnv: string = params[1];
-            let pos = this.entitySpaceViewKey.indexOf("_");
-            let entitySpaceName: string = this.entitySpaceViewKey.substr(0, pos);
-            let entityViewName: string = this.entitySpaceViewKey.substr(pos + 1);
-            this.entitySpaceView = new EntitySpaceView(this.entitySpaceViewKey, customerId, customerEnv, entityViewName, entitySpaceName);
+            let pos = this.entityViewKey.indexOf("_");
+            let entitySpaceName: string = this.entityViewKey.substr(0, pos);
+            let entityViewName: string = this.entityViewKey.substr(pos + 1);
+            this.entityView = new EntityView(this.entityViewKey, customerId, customerEnv, entityViewName, entitySpaceName);
         }
-        console.log(this.entitySpaceView);
+        console.log(this.entityView);
     }
 
     submitTriageJob() {
