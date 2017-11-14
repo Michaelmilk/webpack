@@ -3,3 +3,15 @@ export enum AnalysisType {
     EntityView,
     EntityGraph
 };
+
+export enum ApiController{
+    EntityPlatform = 1,
+    Triage,
+    EntitySpace,
+    EntityView,
+    EntityGraph
+}
+
+export enum RequestAction{
+    AllCustomerIds = 1
+}

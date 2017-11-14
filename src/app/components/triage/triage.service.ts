@@ -3,20 +3,24 @@ import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import {EntityView} from "../../core/triage/entitySpaceView";
+import { EntityView } from "../../core/triage/entitySpaceView";
+import { BaseService } from '../common/base.service';
+import { ApiController, RequestAction } from '../../core/enums';
 
 // import {ExperimentDto} from "../../../core/experimentDto"
 // import { EntitySpaceAnalysis } from '../../../core/entityAnalysis/entitySpaceAnalysis'
 
 @Injectable()
-export class TriageService {
+export class TriageService extends BaseService {
     private headers = new Headers({ 'Content-Type': 'application/json' });
     private entitySpaceViewUrl = 'api/entityspaceanalysis';  // URL to web api
 
-    constructor(private http: Http) { }
+    constructor(private http: Http) {
+        super();
+     }
 
     getEntitySpaceView(){
-        return this.http.get(this.entitySpaceViewUrl).map((response) => response.json());
+        return this.http.get(this.getRequestApi(ApiController.EntityPlatform, RequestAction.AllCustomerIds)).map((response) => response.json());
         
     }
 
