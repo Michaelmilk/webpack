@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { EntityView } from '../../core/triage/entitySpaceView';
+import { EntityView } from '../../core/common/entityView';
 import{ BaseComponent } from '../common/base.component'
+import { TriageService } from './triage.service';
 
 @Component({
     selector: 'triage',
@@ -14,7 +15,7 @@ export class TriageComponent extends BaseComponent implements OnInit {
     entityViewKey: string;
     entityView: EntityView;
 
-    constructor() {
+    constructor(private triageService: TriageService) {
         super();
     }
 
@@ -38,6 +39,10 @@ export class TriageComponent extends BaseComponent implements OnInit {
     }
 
     submitTriageJob() {
+        this.triageService.getEntitySpaceView().subscribe((response) => {
+            console.log(response);
+            
+        });
         console.log("Submit triage job");
     }
 

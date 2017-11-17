@@ -3,7 +3,7 @@ import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import { EntityView } from "../../core/triage/entitySpaceView";
+import { EntityView } from "../../core/common/entityView";
 import { BaseService } from '../common/base.service';
 import { ApiController, RequestAction } from '../../core/enums';
 

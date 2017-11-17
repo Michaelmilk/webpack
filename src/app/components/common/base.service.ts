@@ -10,7 +10,7 @@ import { RequestAction } from '../../core/enums'
 // })
 
 export class BaseService implements OnInit {
-    serverUrl: string = "http://localhost:9000";
+    serverUrl: string = "http://localhost:9000/api";
     ApiController: typeof ApiController = ApiController;
     constructor() { }
 
@@ -18,9 +18,9 @@ export class BaseService implements OnInit {
 
     getRequestApi(apiController: ApiController, requestAction: RequestAction, id?: number): string{
         if (id !== undefined){
-            return `${this.serverUrl}/${ApiController[apiController]}/${id}/${requestAction}`;
+            return `${this.serverUrl}/${ApiController[apiController]}/${id}/${RequestAction[requestAction]}`;
         }else{
-            return `${this.serverUrl}/${ApiController[apiController]}/${requestAction}`;
+            return `${this.serverUrl}/${ApiController[apiController]}/${RequestAction[requestAction]}`;
         }
     }
 }

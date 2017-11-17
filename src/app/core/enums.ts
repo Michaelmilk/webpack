@@ -15,3 +15,10 @@ export enum ApiController{
 export enum RequestAction{
     AllCustomerIds = 1
 }
+
+
+export enum TriageType{
+    EveryVersion,
+    Standard,
+    Triaged
+}
