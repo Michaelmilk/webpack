@@ -34,10 +34,36 @@ export class TriageAdd{
     ){}
 }
 
+export class TriageProperty{
+    constructor(
+        public property: string,
+        public standardValues: string[],
+        public triageValues: string[]
+    ){}
+}
+
+export class TriageComparison{
+    constructor(
+        public subject: string,
+        public properties: TriageProperty[]){
+    }
+}
+
+export class TriageDiff{
+    constructor(
+        public triageType: TriageType,
+        public entity: TriageComparison,
+        public property: TriageComparison,
+        public value: TriageComparison
+    ){}
+}
+
 export class TriageAnalysis{
     constructor(
-        public churned:
-        //public entityView: EntityView,
-        //public functoids: string[]
+        public stardardVersion: string,
+        public triageVersion: string,
+        public deleted: TriageDiff,       
+        public churned: TriageDiff,
+        public added: TriageDiff
     ){}
 }

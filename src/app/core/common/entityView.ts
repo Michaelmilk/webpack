@@ -1,6 +1,5 @@
 import { Constants } from '../../core/common/constants'
 
-
 export class MappingFile{
     constructor(
         public name:string,
