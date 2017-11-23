@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpParams} from '@angular/common/http';
 
 import { ApiController } from '../../core/enums'
 import { RequestAction } from '../../core/enums'

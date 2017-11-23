@@ -1,0 +1,10 @@
+$border-color: #1e88e5;
+$section-bk-color: #fff;
+.section {
+    padding: 15px;
+    background-color: $section-bk-color;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}

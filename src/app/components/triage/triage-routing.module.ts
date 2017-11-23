@@ -2,6 +2,7 @@ import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 //analysis
+import { TriageAnalysisComponent } from './triageAnalysis/triageAnalysis.component'
 import { TriageComponent } from './triage.component'
 
 
@@ -10,6 +11,16 @@ const triageRoutes: Routes = [
   { 
     path: 'triage',
     component: TriageComponent,
+    children: [
+      {
+        path: 'analysis',
+        component: TriageAnalysisComponent
+      },
+      // {
+      //   path: 'statistic',
+      //   component: AnalysisDashboardComponent
+      // }
+    ]
   }
 ];
 

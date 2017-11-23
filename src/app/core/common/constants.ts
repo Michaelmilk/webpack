@@ -10,4 +10,5 @@ export class Constants{
 
     public static readonly streamView:string = "View.Combined.ss";
     public static readonly streamEntitySpace:string = "Fact.Base.ss";
+    public static readonly folderDebug:string = "Debug";
 }

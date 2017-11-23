@@ -1,0 +1,211 @@
+<div class="container-fluid">
+    <h1>EntityView Name</h1>
+    <!-- submit form -->
+    <!-- <form class="form-inline form-horizontal" #triageInputForm="ngForm">
+        <div class="form-group">
+            <label for="Customer Environment">Customer Environment</label>
+            <input type="text" class="form-control" id="customerEnvironment" required [(ngModel)]="customerEnvironment" name="customerEnvironment"
+                #spy>
+        </div>
+        <br>TODO: remove this: {{spy.className}}
+
+        <div class="form-group">
+            <label for="Customer Environment" class="col-sm-6 control-label">Customer Environment:</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="customerEnvironment" required [(ngModel)]="customerEnvironment" name="customerEnvironment">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Entityspace View" class="col-sm-6 control-label">Entityspace View:</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="entitySpaceView" required [(ngModel)]="customerEnvironment" name="entitySpaceView">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-6">
+            </div>
+            <div class="col-sm-6">
+                <button class="btn btn-primary">Load</button>
+            </div>
+        </div>
+    </form> -->
+
+    <div class="section">
+        <form class="form-inline" style="display: flex; justify-content: space-around" (ngSubmit)="loadEntitySpaceView()" #triageInputForm="ngForm">
+            <!-- <div class="form-group">
+                    <label for="Customer Environment">Customer Environment</label>
+                    <input type="text" class="form-control" id="customerEnvironment" required [(ngModel)]="customerEnvironment" name="customerEnvironment" #spy>
+                </div>
+                <br>TODO: remove this: {{spy.className}} 
+            -->
+            <div style="padding-top: 5px;">
+                <label class="radio-inline">
+                    <input type="radio" name="optradio" [(ngModel)]="analysisType" value="Triage"><b>Triage</b>
+                </label>
+                <label class="radio-inline" style="margin-left: 30px;">
+                    <input type="radio" name="optradio" [(ngModel)]="analysisType" value="Standard"><b>Standard</b>
+                </label>
+            </div>
+
+            <div>
+                <div class="form-group">
+                    <label for="Customer Environment">Customer Environment:</label>
+                    <input type="text" class="form-control" id="customerEnvironment" required [(ngModel)]="customerIdEnvironment" name="customerEnvironment">
+                </div>
+
+                <div class="form-group" style="margin-left: 15px;">
+                    <label for="Entityspace View">Entityspace View:</label>
+                    <input type="text" class="form-control" id="entitySpaceView" required [(ngModel)]="entityViewKey" name="entitySpaceView">
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="margin-left: 15px;" [disabled]="!triageInputForm.form.valid">Load</button>
+            </div>
+        </form>
+
+        <hr/>
+        
+        <!-- meta data of standard and triage view -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6" style="padding:0;">
+                    <div class="panel panel-success" ><!-- *ngIf="entityView" -->
+                        <div class="panel-heading" style="padding: 0;">
+                            <!-- <b style="margin-right: 20px">Standard:</b>
+                            <div class="btn-group btn-group-sm">
+                                <button type="button" class="btn btn-success" 
+                                    *ngFor="let standardVersion of entityView.standardVersions" 
+                                    [innerHTML]="standardVersion.version"></button>
+                            </div> -->
+                            <nav class="navbar navbar-default" style="margin-bottom:0;">
+                                <div class="container-fluid">
+                                    <div class="navbar-header">
+                                        <a class="navbar-brand" href="#">WebSiteName</a>
+                                    </div>
+                                    <ul class="nav navbar-nav">
+                                        <li class="active"><a href="#">Home</a></li>
+                                        <li><a href="#">Page 1</a></li>
+                                        <li><a href="#">Page 2</a></li>
+                                        <li><a href="#">Page 3</a></li>
+                                    </ul>
+                                </div>
+                                </nav>
+                        </div>
+                        <div class="panel-body">
+                            <!-- statistic of triage info -->
+                            <div>
+    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6" style="padding:0;">
+                    <div class="panel panel-danger">
+                        <div class="panel-heading">
+                            <b style="margin-right: 20px">Triage:</b>
+                            <div class="btn-group btn-group-sm">
+                                <button type="button" class="btn btn-danger">Button 4</button>
+                                <!-- <button type="button" class="btn btn-info">Button 5</button>
+                            <button type="button" class="btn btn-info">Button 6</button>
+                            <button type="button" class="btn btn-info">Button 6</button> -->
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <!-- statistic of triage info -->
+                            <div>
+    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>
+    
+    <br>
+
+    <div>
+        <job-panel [jobType]="JobType.Triage" (submitJob)="submitTriageJob()" (getJobState)="getTriageJobState()" (cancelJob)="cancelTriageJob()"></job-panel>
+    </div>
+
+
+    <!-- triage side by side -->
+    <div class="">
+        <ul class="nav nav-tabs">
+            <li class="dropdown active">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Deleted
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="active">
+                        <a data-toggle="tab" href="#deletedEntity">Entity</a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#deletedProperty">Property</a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#deletedValue">Value</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a data-toggle="tab" href="#menu1">Churn</a>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Added
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a data-toggle="tab" href="#deletedEntity">Entity</a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#deletedProperty">Property</a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#deletedValue">Value</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a data-toggle="tab" href="#menu2">Added</a>
+            </li>
+            <li>
+                <a data-toggle="tab" href="#menu3">Menu 3</a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade">
+                <h3>HOME</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div id="menu1" class="tab-pane fade">
+                <h3>Menu 1</h3>
+                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <div id="menu2" class="tab-pane fade">
+                <h3>Menu 2</h3>
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
+                </p>
+            </div>
+            <div id="menu3" class="tab-pane fade">
+                <h3>Menu 3</h3>
+                <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            </div>
+            <div id="deletedEntity" class="tab-pane fade in active">
+                <h3>deletedEntity</h3>
+                <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            </div>
+            <div id="deletedProperty" class="tab-pane fade">
+                <h3>deletedProperty</h3>
+                <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            </div>
+            <div id="deletedValue" class="tab-pane fade">
+                <h3>deletedValue</h3>
+                <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            </div>
+        </div>
+    </div>
+</div>

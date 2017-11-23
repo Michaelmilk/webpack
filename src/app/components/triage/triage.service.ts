@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
-
+import {    HttpClient, HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpParams} from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
 
 import { EntityView } from "../../core/common/entityView";
 import { BaseService } from '../common/base.service';
 import { ApiController, RequestAction } from '../../core/enums';
+//import { HttpClient } from '@angular/common/http/src/client';
 
 // import {ExperimentDto} from "../../../core/experimentDto"
 // import { EntitySpaceAnalysis } from '../../../core/entityAnalysis/entitySpaceAnalysis'
@@ -15,13 +15,19 @@ export class TriageService extends BaseService {
     private headers = new Headers({ 'Content-Type': 'application/json' });
     private entitySpaceViewUrl = 'api/entityspaceanalysis';  // URL to web api
 
-    constructor(private http: Http) {
+    constructor(private http: HttpClient) {
         super();
      }
 
-    getEntitySpaceView(){
-        return this.http.get(this.getRequestApi(ApiController.EntityPlatform, RequestAction.AllCustomerIds)).map((response) => response.json());
-        
+     getEntityView(customerId: string, customerEnv: string, viewKey: string){
+        //return this.http.get(this.getRequestApi(ApiController.TriageAnalysis, RequestAction.AllCustomerIds)).map((response) => response.json());
+
+        //https://blog.angular-university.io/angular-http/
+        //let params = new HttpParams().set("paramName",paramValue).set("paramName2", paramValue2); //Create new HttpParams
+        const httpParams = new HttpParams().set('customerId', customerId).set('customerEnv', customerEnv).set('viewKey', viewKey);
+        //const httpParams = new HttpParams().append('customerId', customerId).append('customerEnv', customerEnv).append('viewKey', viewKey);
+        console.log(httpParams.toString());
+        return this.http.get<EntityView>("http://localhost:9000/api/TriageAnalysis/entityView", { params: httpParams });//.map((response) => response.json());
     }
 
     // getEntitySpaceAnalysisDtos(): Promise<ExperimentDto[]> {

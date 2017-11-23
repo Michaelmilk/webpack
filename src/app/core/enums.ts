@@ -6,7 +6,7 @@ export enum AnalysisType {
 
 export enum ApiController{
     EntityPlatform = 1,
-    Triage,
+    TriageAnalysis,
     EntitySpace,
     EntityView,
     EntityGraph

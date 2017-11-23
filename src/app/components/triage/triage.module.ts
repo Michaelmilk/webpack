@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';//ngModel
-import { HttpModule } from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
 //routes
 import { TriageRoutingModule } from './triage-routing.module';
 
@@ -14,18 +14,20 @@ import { TriageService } from './triage.service';
 
 //plugin
 import {SlimLoadingBarModule} from 'ng2-slim-loading-bar'
+import { TriageAnalysisComponent } from './triageAnalysis/triageAnalysis.component';
 
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     TriageRoutingModule,
     SlimLoadingBarModule.forRoot()
   ],
   declarations: [
     TriageComponent,
+    TriageAnalysisComponent,
     JobPanelComponent
   ],
   providers: [

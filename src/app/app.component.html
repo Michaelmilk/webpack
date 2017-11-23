@@ -206,16 +206,21 @@
               <!-- <li><a routerLink="/dashboard" routerLinkActive="active"><i class="fa fa-circle-o"></i> Dashboard</a></li> -->
             </ul>
           </li>
-          <!-- chart -->
-          <li>
-            <!-- <a href="../widgets.html"> -->
-            <a routerLink="/triage">
+          <!-- triage -->
+          <li class="treeview">
+            <a href="#">
+              <!-- <i class="fa fa-area-chart"></i> <span>Entity Analysis</span> -->
               <i class="fa fa-eyedropper"></i> <span>Triage</span>
               <span class="pull-right-container">
-                <small class="label pull-right bg-green">new</small>
+                <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
+            <ul class="treeview-menu">
+              <li><a routerLink="/triage/analysis"><i class="fa fa-circle-o"></i> Analysis</a></li>
+              <li><a routerLink="/triage/statistic"><i class="fa fa-circle-o"></i> Statistic</a></li>
+            </ul>
           </li>
+          <!-- report -->
           <li class="treeview">
             <a href="#">
                 <!-- <i class="fa fa-file-text"></i> -->
