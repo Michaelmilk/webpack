@@ -1,37 +1,5 @@
 <div class="container-fluid">
-    <h1>EntityView Name</h1>
-    <!-- submit form -->
-    <!-- <form class="form-inline form-horizontal" #triageInputForm="ngForm">
-        <div class="form-group">
-            <label for="Customer Environment">Customer Environment</label>
-            <input type="text" class="form-control" id="customerEnvironment" required [(ngModel)]="customerEnvironment" name="customerEnvironment"
-                #spy>
-        </div>
-        <br>TODO: remove this: {{spy.className}}
-
-        <div class="form-group">
-            <label for="Customer Environment" class="col-sm-6 control-label">Customer Environment:</label>
-            <div class="col-sm-6">
-                <input type="text" class="form-control" id="customerEnvironment" required [(ngModel)]="customerEnvironment" name="customerEnvironment">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="Entityspace View" class="col-sm-6 control-label">Entityspace View:</label>
-            <div class="col-sm-6">
-                <input type="text" class="form-control" id="entitySpaceView" required [(ngModel)]="customerEnvironment" name="entitySpaceView">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-sm-6">
-            </div>
-            <div class="col-sm-6">
-                <button class="btn btn-primary">Load</button>
-            </div>
-        </div>
-    </form> -->
-
+        <!-- submit form -->
     <div class="section">
         <form class="form-inline" style="display: flex; justify-content: space-around" (ngSubmit)="loadEntitySpaceView()" #triageInputForm="ngForm">
             <!-- <div class="form-group">
@@ -40,12 +8,19 @@
                 </div>
                 <br>TODO: remove this: {{spy.className}} 
             -->
+            <h3 style="margin:0">
+                <a target="_blank" [href]="entityView.entityViewUrl" [innerHTML]="entityView.name">
+                </a>
+            </h3>
+            
             <div style="padding-top: 5px;">
                 <label class="radio-inline">
-                    <input type="radio" name="optradio" [(ngModel)]="analysisType" value="Triage"><b>Triage</b>
+                    <input type="radio" name="optradio" [(ngModel)]="side2Type" value="Triage" (ngModelChange)="setSide2VersionNum($event)">
+                    <b>Triage</b>
                 </label>
                 <label class="radio-inline" style="margin-left: 30px;">
-                    <input type="radio" name="optradio" [(ngModel)]="analysisType" value="Standard"><b>Standard</b>
+                    <input type="radio" name="optradio" [(ngModel)]="side2Type" value="Standard" (ngModelChange)="setSide2VersionNum($event)">
+                    <b>Standard</b>
                 </label>
             </div>
 
@@ -60,75 +35,194 @@
                     <input type="text" class="form-control" id="entitySpaceView" required [(ngModel)]="entityViewKey" name="entitySpaceView">
                 </div>
 
-                <button type="submit" class="btn btn-primary" style="margin-left: 15px;" [disabled]="!triageInputForm.form.valid">Load</button>
+                <button type="submit" class="btn btn-primary" style="margin-left: 15px;" [disabled]="!triageInputForm.form.valid || isFetchingEntityView">
+                    <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="isFetchingEntityView"></i>
+                    <span class="sr-only">Loading...</span>
+                    Load
+                </button>
             </div>
         </form>
 
         <hr/>
-        
+
         <!-- meta data of standard and triage view -->
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6" style="padding:0;">
-                    <div class="panel panel-success" ><!-- *ngIf="entityView" -->
-                        <div class="panel-heading" style="padding: 0;">
-                            <!-- <b style="margin-right: 20px">Standard:</b>
-                            <div class="btn-group btn-group-sm">
-                                <button type="button" class="btn btn-success" 
-                                    *ngFor="let standardVersion of entityView.standardVersions" 
-                                    [innerHTML]="standardVersion.version"></button>
-                            </div> -->
-                            <nav class="navbar navbar-default" style="margin-bottom:0;">
+                    <div class="panel panel-success">
+                        <div class="panel-heading" style="padding:0;">
+                            <nav class="navbar navbar-light navbar-default" style="margin-bottom:0;">
                                 <div class="container-fluid">
                                     <div class="navbar-header">
-                                        <a class="navbar-brand" href="#">WebSiteName</a>
+                                        <a class="navbar-brand" href="#">Standard</a>
                                     </div>
                                     <ul class="nav navbar-nav">
-                                        <li class="active"><a href="#">Home</a></li>
-                                        <li><a href="#">Page 1</a></li>
-                                        <li><a href="#">Page 2</a></li>
-                                        <li><a href="#">Page 3</a></li>
+                                        <li [class.active]="currentSide1.version == side1VersionNum" (click)="setSide1ViewVersion(side1VersionNum)" *ngFor="let side1VersionNum of side1VersionNums">
+                                            <a class="pointer" [innerHTML]="side1VersionNum"></a>
+                                        </li>
                                     </ul>
                                 </div>
-                                </nav>
+                            </nav>
                         </div>
                         <div class="panel-body">
                             <!-- statistic of triage info -->
                             <div>
-    
+                                <table class="table table-condensed table-responsive table-hover" style="margin-bottom:0;">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <b>State</b>
+                                            </td>
+                                            <td [innerHTML]="currentSide1.state"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b>StreamPath</b>
+                                            </td>
+                                            <td>
+                                                <a target="_blank" href="{{currentSide1.viewStreamPath}}?property=info" [innerHTML]="currentSide1.viewStreamPath"></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b>VC</b>
+                                            </td>
+                                            <td [innerHTML]="currentSide1.virtualCluster"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b>UpdatedTime</b>
+                                            </td>
+                                            <td [innerHTML]="currentSide1.lastUpdatedTime">VC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b>MappingFile</b>
+                                            </td>
+                                            <td>
+                                                <ul class="list-group" style="margin-bottom: 0;">
+                                                    <li class="list-group-item" *ngFor="let mappingFile of currentSide1.mappingSetting.mappingFiles">
+                                                        {{mappingFile.name}}@{{mappingFile.version}}
+                                                        <span class="badge pointer" style="background-color: skyblue;">
+                                                            <i class="fa fa-cloud-download"></i>
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b>Functoid</b>
+                                            </td>
+                                            <td>
+                                                <ul class="list-group" style="margin-bottom: 0;">
+                                                    <li class="list-group-item" *ngFor="let functoid of currentSide1.mappingSetting.functoids">
+                                                        {{functoid}}
+                                                        <span class="badge pointer" style="background-color: skyblue;">
+                                                            <i class="fa fa-cloud-download" (click)="downloadFunctoid(currentSide1.version, functoid)"></i>
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6" style="padding:0;">
-                    <div class="panel panel-danger">
-                        <div class="panel-heading">
-                            <b style="margin-right: 20px">Triage:</b>
-                            <div class="btn-group btn-group-sm">
-                                <button type="button" class="btn btn-danger">Button 4</button>
-                                <!-- <button type="button" class="btn btn-info">Button 5</button>
-                            <button type="button" class="btn btn-info">Button 6</button>
-                            <button type="button" class="btn btn-info">Button 6</button> -->
-                            </div>
+                    <div class="panel" [ngClass]="(side2Type == 'Standard') ? 'panel-success' : 'panel-danger'">
+                        <div class="panel-heading" style="padding:0;">
+                            <nav class="navbar navbar-light navbar-default" style="margin-bottom:0;">
+                                <div class="container-fluid">
+                                    <div class="navbar-header">
+                                        <a class="navbar-brand" href="#" [innerHTML]="side2Type"></a>
+                                    </div>
+                                    <ul class="nav navbar-nav">
+                                        <li [class.active]="currentSide2.version == side2VersionNum" (click)="setSide2ViewVersion(side2VersionNum)" *ngFor="let side2VersionNum of side2VersionNums">
+                                            <a class="pointer" [innerHTML]="side2VersionNum"></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
                         </div>
                         <div class="panel-body">
                             <!-- statistic of triage info -->
-                            <div>
-    
+                            <div *ngIf="currentSide2.state">
+                                <table class="table table-condensed table-responsive table-hover" style="margin-bottom:0;">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <b>State</b>
+                                            </td>
+                                            <td [innerHTML]="currentSide2.state"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b>StreamPath</b>
+                                            </td>
+                                            <td>
+                                                <a target="_blank" href="{{currentSide2.viewStreamPath}}?property=info" [innerHTML]="currentSide2.viewStreamPath"></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b>VC</b>
+                                            </td>
+                                            <td [innerHTML]="currentSide2.virtualCluster"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b>UpdatedTime</b>
+                                            </td>
+                                            <td [innerHTML]="currentSide2.lastUpdatedTime">VC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b>MappingFile</b>
+                                            </td>
+                                            <td>
+                                                <ul class="list-group" style="margin-bottom: 0;">
+                                                    <li class="list-group-item" *ngFor="let mappingFile of currentSide2.mappingSetting.mappingFiles">
+                                                        {{mappingFile.name}}@{{mappingFile.version}}
+                                                        <span class="badge pointer" style="background-color: skyblue;">
+                                                            <i class="fa fa-cloud-download"></i>
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b>Functoid</b>
+                                            </td>
+                                            <td>
+                                                <ul class="list-group" style="margin-bottom: 0;">
+                                                    <li class="list-group-item" *ngFor="let functoid of currentSide2.mappingSetting.functoids">
+                                                        {{functoid}}
+                                                        <span class="badge pointer" style="background-color: skyblue;">
+                                                            <i class="fa fa-cloud-download"></i>
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>        
+        </div>
     </div>
-    
+
     <br>
 
     <div>
         <job-panel [jobType]="JobType.Triage" (submitJob)="submitTriageJob()" (getJobState)="getTriageJobState()" (cancelJob)="cancelTriageJob()"></job-panel>
     </div>
-
 
     <!-- triage side by side -->
     <div class="">
@@ -179,7 +273,8 @@
         <div class="tab-content">
             <div id="home" class="tab-pane fade">
                 <h3>HOME</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                    magna aliqua.</p>
             </div>
             <div id="menu1" class="tab-pane fade">
                 <h3>Menu 1</h3>
@@ -187,7 +282,8 @@
             </div>
             <div id="menu2" class="tab-pane fade">
                 <h3>Menu 2</h3>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
+                    aperiam.
                 </p>
             </div>
             <div id="menu3" class="tab-pane fade">

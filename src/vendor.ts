@@ -9,6 +9,8 @@ import '@angular/router';
 // RxJS
 import 'rxjs';
 
+//import 'file-saver';
+
 //import 'jquery';
 
 // Other vendors for example jQuery, Lodash or Bootstrap
@@ -19,6 +21,7 @@ import './assets/css/styles.scss';
 
 //official third party js
 import 'bootstrap/dist/js/bootstrap.js';
+//import 'angular-file-saver/dist/angular-file-saver.bundle.js';
 
 //customized third party js
 import './assets/js/adminlte.js';

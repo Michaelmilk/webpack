@@ -2,42 +2,61 @@ import { Constants } from '../../core/common/constants'
 
 export class MappingFile{
     constructor(
-        public name:string,
-        public version: string,//dot splited
-        public majorVersion: number,
-        public minorVersion: number
+        public name?:string,
+        public version?: string,//dot splited
+        public majorVersion?: number,
+        public minorVersion?: number
     ){}
 }
 
 export class MappingSetting{
     constructor(
-        public mappingFiles: MappingFile[],
-        public functoids: string[]
-    ){}
+        public mappingFiles?: MappingFile[],
+        public functoids?: string[]
+    ){
+        this.mappingFiles = new Array<MappingFile>();
+    }
 }
 
 export class EntityViewVersion{
     // public _viewStreamPath: string;
     // public _entitySpaceStreamPath: string;
 
+    // constructor(
+    //     public state: string,
+    //     public virtualCluster: string,
+    //     public vcRelativeFolder: string,
+    //     public mappingSetting: MappingSetting,
+    //     public lastUpdatedTime: string,
+    //     public majorVersion: number,
+    //     public minorVersion: number,  
+    //     public buildNumber: number,
+    //     public version: string,
+    //     public sharedStreamFolder: string,
+    //     public relativeStreamPath: string,
+    //     public viewStreamPath: string,
+    //     public entitySpaceStreamPath: string,
+    //     public relativeDebugStreamFolder: string
+    // ){}
+
     constructor(
-        public state: string,
-        public virtualCluster: string,
-        public vcRelativeFolder: string,
-        public mappingSetting: MappingSetting,
-        public lastUpdatedTime: string,
-        public majorVersion: number,
-        public minorVersion: number,  
-        public buildNumber: number,
-        public version: string,
-        public sharedStreamFolder: string,
-        public relativeStreamPath: string,
-        public viewStreamPath: string,
-        public entitySpaceStreamPath: string,
-        public relativeDebugStreamFolder: string
-    ){}
-
-
+        public state?: string,
+        public virtualCluster?: string,
+        public vcRelativeFolder?: string,
+        public mappingSetting?: MappingSetting,
+        public lastUpdatedTime?: string,
+        public majorVersion?: number,
+        public minorVersion?: number,  
+        public buildNumber?: number,
+        public version?: string,
+        public sharedStreamFolder?: string,
+        public relativeStreamPath?: string,
+        public viewStreamPath?: string,
+        public entitySpaceStreamPath?: string,
+        public relativeDebugStreamFolder?: string
+    ){
+        this.mappingSetting = new MappingSetting();
+    }
     // get version(): string {
     //     return `${this.majorVersion}.${this.minorVersion}.${this.buildNumber}`;
     // }
@@ -88,25 +107,45 @@ export class EntityViewVersion{
 }
 
 export class EntityView{
+    // constructor(
+    //     public viewKey: string,
+    //     public customerId: string,
+    //     public customerEnv: string,
+    //     public name: string,
+    //     public entitySpaceName: string,
+    //     public model?: string,
+    //     public state?: string,
+    //     public createdBy?: string,
+    //     public createdTime?: string,
+    //     //public updatedBy?: string,
+    //     public updatedTime?: string,
+    //     //public entityViewVersion?: EntityViewVersion,
+    //     public standardVersions?: EntityViewVersion[],
+    //     public triagedVersions?: EntityViewVersion[],
+    //     public entitySpaceUrl?: string,
+    //     // public entitySpaceStreamPath?: string,
+    //     // public entitySpaceDebugStreamFolder?: string,
+    //     // public entityViewUrl?: string,
+    //     // public entityViewStreamPath?: string
+    //   ) {  }
+
     constructor(
-        public viewKey: string,
-        public customerId: string,
-        public customerEnv: string,
-        public name: string,
-        public entitySpaceName: string,
+        public viewKey?: string,
+        public customerId?: string,
+        public customerEnv?: string,
+        public name?: string,
+        public entitySpaceName?: string,
         public model?: string,
         public state?: string,
         public createdBy?: string,
         public createdTime?: string,
-        //public updatedBy?: string,
         public updatedTime?: string,
-        //public entityViewVersion?: EntityViewVersion,
-        public standardVersion?: EntityViewVersion[],
-        public triagedVersions?: EntityViewVersion[],
         public entitySpaceUrl?: string,
-        // public entitySpaceStreamPath?: string,
-        // public entitySpaceDebugStreamFolder?: string,
-        // public entityViewUrl?: string,
-        // public entityViewStreamPath?: string
-      ) {  }
+        public entityViewUrl?: string,
+        public standardVersions?: EntityViewVersion[],
+        public triagedVersions?: EntityViewVersion[]
+      ) {
+          this.standardVersions = new Array<EntityViewVersion>();
+          this.triagedVersions = new Array<EntityViewVersion>();
+      }
 }
