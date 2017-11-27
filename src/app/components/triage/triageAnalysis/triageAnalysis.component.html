@@ -103,8 +103,9 @@
                                                 <ul class="list-group" style="margin-bottom: 0;">
                                                     <li class="list-group-item" *ngFor="let mappingFile of currentSide1.mappingSetting.mappingFiles">
                                                         {{mappingFile.name}}@{{mappingFile.version}}
-                                                        <span class="badge pointer" style="background-color: skyblue;">
-                                                            <i class="fa fa-cloud-download"></i>
+                                                        <span class="badge pointer" style="background-color: skyblue;" (click)="downloadMappingFile(currentSide1.version, mappingFile)">
+                                                            <i class="fa fa-cloud-download" *ngIf="!mappingFile.isDownloading"></i>
+                                                            <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="mappingFile.isDownloading"></i>
                                                         </span>
                                                     </li>
                                                 </ul>
@@ -117,9 +118,10 @@
                                             <td>
                                                 <ul class="list-group" style="margin-bottom: 0;">
                                                     <li class="list-group-item" *ngFor="let functoid of currentSide1.mappingSetting.functoids">
-                                                        {{functoid}}
-                                                        <span class="badge pointer" style="background-color: skyblue;">
-                                                            <i class="fa fa-cloud-download" (click)="downloadFunctoid(currentSide1.version, functoid)"></i>
+                                                        {{functoid.name}}
+                                                        <span class="badge pointer" style="background-color: skyblue;" (click)="downloadFunctoid(currentSide1.version, functoid)">
+                                                            <i class="fa fa-cloud-download" *ngIf="!functoid.isDownloading"></i>
+                                                            <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="functoid.isDownloading"></i>
                                                         </span>
                                                     </li>
                                                 </ul>
@@ -186,8 +188,9 @@
                                                 <ul class="list-group" style="margin-bottom: 0;">
                                                     <li class="list-group-item" *ngFor="let mappingFile of currentSide2.mappingSetting.mappingFiles">
                                                         {{mappingFile.name}}@{{mappingFile.version}}
-                                                        <span class="badge pointer" style="background-color: skyblue;">
-                                                            <i class="fa fa-cloud-download"></i>
+                                                        <span class="badge pointer" style="background-color: skyblue;" (click)="downloadMappingFile(currentSide2.version, mappingFile)">
+                                                            <i class="fa fa-cloud-download" *ngIf="!mappingFile.isDownloading"></i>
+                                                            <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="mappingFile.isDownloading"></i>
                                                         </span>
                                                     </li>
                                                 </ul>
@@ -200,9 +203,10 @@
                                             <td>
                                                 <ul class="list-group" style="margin-bottom: 0;">
                                                     <li class="list-group-item" *ngFor="let functoid of currentSide2.mappingSetting.functoids">
-                                                        {{functoid}}
+                                                        {{functoid.name}}
                                                         <span class="badge pointer" style="background-color: skyblue;">
-                                                            <i class="fa fa-cloud-download"></i>
+                                                            <i class="fa fa-cloud-download" *ngIf="!functoid.isDownloading"></i>
+                                                            <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="functoid.isDownloading"></i>
                                                         </span>
                                                     </li>
                                                 </ul>

@@ -1,44 +1,34 @@
 import { Constants } from '../../core/common/constants'
 
+export class Functoid{
+    constructor(
+        public name: string,
+        public isDownloading: boolean
+    ){
+        this.isDownloading = false;
+    }
+}
+
 export class MappingFile{
     constructor(
         public name?:string,
         public version?: string,//dot splited
         public majorVersion?: number,
-        public minorVersion?: number
-    ){}
+        public minorVersion?: number,
+        public isDownloading?: boolean
+    ){
+        this.isDownloading = false;
+    }
 }
 
 export class MappingSetting{
     constructor(
         public mappingFiles?: MappingFile[],
-        public functoids?: string[]
-    ){
-        this.mappingFiles = new Array<MappingFile>();
-    }
+        public functoids?: Functoid[]
+    ){}
 }
 
 export class EntityViewVersion{
-    // public _viewStreamPath: string;
-    // public _entitySpaceStreamPath: string;
-
-    // constructor(
-    //     public state: string,
-    //     public virtualCluster: string,
-    //     public vcRelativeFolder: string,
-    //     public mappingSetting: MappingSetting,
-    //     public lastUpdatedTime: string,
-    //     public majorVersion: number,
-    //     public minorVersion: number,  
-    //     public buildNumber: number,
-    //     public version: string,
-    //     public sharedStreamFolder: string,
-    //     public relativeStreamPath: string,
-    //     public viewStreamPath: string,
-    //     public entitySpaceStreamPath: string,
-    //     public relativeDebugStreamFolder: string
-    // ){}
-
     constructor(
         public state?: string,
         public virtualCluster?: string,

@@ -67,7 +67,32 @@ export class TriageService extends BaseService {
                 //responseType: 'blob'
                 //headers: new HttpHeaders().set('Content-Type', 'undefined')
             }
-		);//.map(data => console.log("dsasad", data));
+		);
+    }
+    
+    getMappingFile(
+		customerId: string,
+		customerEnv: string,
+        viewKey: string,
+        dotSplitedVersionNum: string,
+		functoidName: string
+	) {
+		const httpParams = new HttpParams()
+			.set("customerId", customerId)
+			.set("customerEnv", customerEnv)
+			.set("viewKey", viewKey)
+			.set("dotSplitedVersionNum", dotSplitedVersionNum)
+			.set("mappingFileName", functoidName);
+		return this.http.get(
+			`${this.epServiceUrl}/mappingFile`,
+            { 
+                observe: 'response',
+                params: httpParams,
+                responseType: 'text'
+                //responseType: 'blob'
+                //headers: new HttpHeaders().set('Content-Type', 'undefined')
+            }
+		);
 	}
 
 	private handleError(error: any): Promise<any> {

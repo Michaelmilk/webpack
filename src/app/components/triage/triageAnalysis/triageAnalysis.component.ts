@@ -12,8 +12,7 @@ import {
 import { saveAs } from 'file-saver';
 
 
-import { EntityView } from "../../../core/common/entityView";
-import { EntityViewVersion } from "../../../core/common/entityView";
+import { EntityView, Functoid, EntityViewVersion, MappingFile} from "../../../core/common/entityView";
 import { BaseComponent } from "../../common/base.component";
 import { TriageService } from "../triage.service";
 import { EntityAnalysis } from "../../../core/entityAnalysis/entityAnalysis";
@@ -140,31 +139,40 @@ export class TriageAnalysisComponent extends BaseComponent implements OnInit {
 		}
 	}
 
-	downloadFunctoid(dotSplitedVersionNum: string, functoidName: string) {
+	downloadFunctoid(dotSplitedVersionNum: string, functoid: Functoid) {
+        functoid.isDownloading = true;
 		this.triageService
 			.getFunctoid(
 				this.customerId,
 				this.customerEnv,
                 this.entityViewKey,
                 dotSplitedVersionNum,
-				functoidName
-			)
-			.subscribe((response: any) => {
-                //this.downloadFile(functoid);
-                // var blob = new Blob([response._body], { type: 'application/octet-binary' });
-                // //var blob = new Blob([data], { type: 'text/csv' });
-                // var url= window.URL.createObjectURL(blob);
-                // window.open(url);
-        
-                console.log("response", response);
-                const contentDispositionHeader: string = response.headers.get('Content-Disposition');
-                console.log('contentDispositionHeader', contentDispositionHeader);
-                // const parts: string[] = contentDispositionHeader.split(';');
-                // const filename = parts[1].split('=')[1];
+				functoid.name
+			).subscribe((response: HttpResponse<any>) => {
+                const functoidName: string = response.headers.get('filename');
                 const blob = new Blob([response.body], { type: 'application/octet-binary,charset=utf-8' });
-                saveAs(blob, "filename.dll"); 
+                saveAs(blob, functoid.name); 
+                functoid.isDownloading = false;        
+            });
+    }
+    
+    downloadMappingFile(dotSplitedVersionNum: string, mappingFile: MappingFile) {
+        mappingFile.isDownloading = true;
+		this.triageService
+			.getMappingFile(
+				this.customerId,
+				this.customerEnv,
+                this.entityViewKey,
+                dotSplitedVersionNum,
+				mappingFile.name
+			).subscribe((response: HttpResponse<any>) => {
+                const mappingFileName: string = response.headers.get('filename');
+                const blob = new Blob([response.body], { type: 'application/xml,charset=utf-8' });
+                saveAs(blob, `${mappingFileName}@${mappingFile.version}.xml`); 
+                mappingFile.isDownloading = false;        
             });
 	}
+
 
 	submitTriageJob() {
 		console.log("Submit triage job");
