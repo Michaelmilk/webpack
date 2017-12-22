@@ -60,10 +60,35 @@ export class TriageDiff{
 
 export class TriageAnalysis{
     constructor(
-        public stardardVersion: string,
-        public triageVersion: string,
-        public deleted: TriageDiff,       
-        public churned: TriageDiff,
-        public added: TriageDiff
+        public id?: number,
+        public customerId?: string,
+        public customerEnv?: string,
+        public entitySpaceName?: string,
+        public entitySpaceViewName?: string,
+        public stardardVersion?: string,
+        public triagedVersion?: string,
+        public standardViewRelativeStreamPath?: string,
+        public triagedViewRelativeStreamPath?: string,
+        public triageAnalysisOutputFolder?: string,
+        public entityView?: EntityView,
+        public resultId?: number,
+        public analysisJobId?: number
     ){}
+}
+
+
+
+export class TriageAnalysisDto{
+    constructor(
+        public CustomerId?: string,
+        public CustomerEnv?: string,
+        public EntitySpaceName?: string,
+        public EntitySpaceViewName?: string,
+        public DebugFolderRelativePath?: string,
+        public StandardVersion?: string,
+        public TriageVersion?: string,
+        public StandardViewRelativeStreamPath?: string,
+        public TriagedViewRelativeStreamPath?: string
+    )
+    { }
 }

@@ -43,6 +43,7 @@ export class EntityViewVersion{
         public relativeStreamPath?: string,
         public viewStreamPath?: string,
         public entitySpaceStreamPath?: string,
+        public fullDebugStreamFolder?: string,
         public relativeDebugStreamFolder?: string
     ){
         this.mappingSetting = new MappingSetting();
@@ -123,8 +124,8 @@ export class EntityView{
         public viewKey?: string,
         public customerId?: string,
         public customerEnv?: string,
-        public name?: string,
         public entitySpaceName?: string,
+        public entitySpaceViewName?: string,
         public model?: string,
         public state?: string,
         public createdBy?: string,

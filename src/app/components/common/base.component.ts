@@ -11,8 +11,7 @@ import {
 } from "@angular/common/http";
 
 import { AnalysisType } from '../../core/enums'
-import { JobType } from '../../core/job/jobType'
-import { JobStatus } from '../../core/job/jobStatus'
+import { JobType, JobState } from '../../core/job/job'
 
 // @Component({
 //     selector: 'app-name',
@@ -23,7 +22,7 @@ import { JobStatus } from '../../core/job/jobStatus'
 export class BaseComponent implements OnInit {
     AnalysisType: typeof AnalysisType = AnalysisType;
     JobType: typeof JobType = JobType;
-    JobStatus: typeof JobStatus = JobStatus;
+    JobState: typeof JobState = JobState;
     
     constructor() { }
 

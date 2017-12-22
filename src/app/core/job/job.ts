@@ -1,18 +1,51 @@
-import { JobType } from './jobType'
-import { JobStatus} from './jobStatus'
+// export class Job{
+//     constructor(
+//         public id: number,
+//         public hostId: number,
+//         public type: JobType,
+//         public status: JobStatus,
+//         public submitTime?: string,
+//         public startTime?: string,
+//         public endTime?: string,
+//         public queueTime?: string,
+//         public runningTime?: string,
+//         public url?: string,
+//         public aetherExperimentId?: string,
+//         public completePercent?: string
+//     ){}
+// }
 
-export class Job{
+export enum JobState
+{
+    UnKnown = 0,
+    Waiting = 1,
+    Running = 2,
+    Succeeded = 3,
+    Failed = 4,
+    Canceled = 5,
+    TimeOut = 6
+}
+
+export enum JobType{
+    DataAnalysis = 1,
+    EntityViewExplorer = 2,
+    EntityViewStatistic = 3,
+    EntityViewFilter = 4,
+    EntityViewValidation = 5,
+    Triage = 6   
+}
+
+
+export class JobPanelState{
     constructor(
-        public id: number,
-        public type: JobType,
-        public status: JobStatus,
-        public submitTime?: string,
-        public startTime?: string,
-        public endTime?: string,
-        public queueTime?: string,
-        public runningTime?: string,
-        public url?: string,
-        public aetherId?: string,
-        public completePercent?: string
-    ){}
+        public isEnabled?: boolean,
+        public isSubmiting?: boolean,
+        public isRunning?: boolean,
+        public isCanceling?: boolean
+    ){
+        this.isEnabled = true;
+        this.isSubmiting = false;
+        this.isRunning = false;
+        this.isCanceling = false;
+    } 
 }

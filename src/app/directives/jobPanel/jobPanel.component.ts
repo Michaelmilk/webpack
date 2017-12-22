@@ -1,8 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core'
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core'
+import {Observable, BehaviorSubject} from 'rxjs/Rx';
 
-import { Job } from '../../core/job/job'
-import { JobType } from '../../core/job/jobType'
-import { JobStatus} from '../../core/job/jobStatus'
+import { JobType, JobState, JobPanelState } from '../../core/job/job'
+import { AetherJob } from "../../core/job/AetherJob";
 
 @Component({
     selector: 'job-panel',
@@ -11,15 +11,46 @@ import { JobStatus} from '../../core/job/jobStatus'
 })
 
 export class JobPanelComponent implements OnInit {
-    job: Job = new Job(1, JobType.EntityViewStatistic, JobStatus.Waiting);
+    //job: AetherJob = new AetherJob();// = new Job(1, 1, JobType.EntityViewStatistic, JobStatus.Waiting);
+    //isRunning: boolean;
+    virtualClusters: Array<string> = ["https://cosmos08.osdinfra.net/cosmos/Knowledge/", "https://cosmos08.osdinfra.net/cosmos/Knowledge.STCA.prod/"];
+    hostId: number;
+    timer: Observable<number>;
+    
+    //the way to pass async object
+    // private _job = new BehaviorSubject<AetherJob>(new AetherJob());
+    
+    // // change data to use getter and setter
+    // @Input()
+    // set job(value) {
+    //     // set the latest value for _data BehaviorSubject
+    //     this._job.next(value);
+    // };
 
-    isRunning: boolean = false;
+    // get job() {
+    //     // get the latest value from _data BehaviorSubject
+    //     return this._job.getValue();
+    // }
+    
+
+    //cloudPriority: number;
     //obText: string;
     @Input() jobType: JobType;
-    @Output() submitJob: EventEmitter<any> = new EventEmitter();
-    @Output() getJobState: EventEmitter<any> = new EventEmitter();
-    @Output() cancelJob: EventEmitter<any> = new EventEmitter();
-    @Output() reloadPage: EventEmitter<any> = new EventEmitter();
+    @Input() virtualCluster: string;
+    @Input() cloudPriority: number;
+    @Input() job: AetherJob;
+    @Input() submitJob: Function;
+    @Input() getJobState: Function;
+    @Input() cancelJob: Function;
+    @Input() reloadPage: Function;
+    @Input() jobPanelState: JobPanelState;
+
+    @Output() virtualClusterChange: EventEmitter<string> = new EventEmitter();
+    @Output() cloudPriorityChange: EventEmitter<number> = new EventEmitter();
+    // @Output() submitJob: EventEmitter<any> = new EventEmitter();
+    // @Output() getJobState: EventEmitter<any> = new EventEmitter();
+    // @Output() cancelJob: EventEmitter<any> = new EventEmitter();
+    // @Output() reloadPage: EventEmitter<any> = new EventEmitter();
 
     get jobText(): string{
         return `${JobType[this.jobType]} Job`;
@@ -28,43 +59,50 @@ export class JobPanelComponent implements OnInit {
     constructor() { }
 
     ngOnInit() { 
-        //this.jobText = `${JobType[this.jobType]} job`;
+        this.virtualCluster = "https://cosmos08.osdinfra.net/cosmos/Knowledge/";
+        this.cloudPriority = 1000;      
+        this.job = new AetherJob();
     }
 
     submit(){
-        this.submitJob.emit(null);
+        this.cloudPriorityChange.emit(this.cloudPriority);
+        console.log("cloudPriority-directive", this.cloudPriority);
+        this.virtualClusterChange.emit(this.virtualCluster);
+        console.log("cloudPriority-directive", this.virtualCluster);
+        //this.submitJob.emit(null);
+        this.submitJob();
         console.log(this.jobType);
     }
 
     getState(){
-        this.getJobState.emit(null);
+        this.getJobState();
 
-        switch (this.job.status) {
-            case JobStatus.UnKnown: {
+        switch (this.job.state) {
+            case JobState.UnKnown: {
                 //return AnalysisType.EntitySpace;
             }
-            case JobStatus.Waiting: {
+            case JobState.Waiting: {
                 //return AnalysisType.EntitySpace;
             }
-            case JobStatus.Running: {
+            case JobState.Running: {
                 //return AnalysisType.EntitySpace;
             }
-            case JobStatus.Succeeded: {
-                this.reloadPage.emit(null);
+            case JobState.Succeeded: {
+                //this.reloadPage.emit(null);
             }
-            case JobStatus.Failed: {
+            case JobState.Failed: {
                 //return AnalysisType.EntitySpace;
             }
-            case JobStatus.Canceled: {
+            case JobState.Canceled: {
                 //return AnalysisType.EntitySpace;
             }
-            case JobStatus.TimeOut: {
+            case JobState.TimeOut: {
                 //return AnalysisType.EntitySpace;
             }
         }
     }
 
     cancel(){
-        this.cancelJob.emit(null);
+        //this.cancelJob.emit(null);
     }
 }

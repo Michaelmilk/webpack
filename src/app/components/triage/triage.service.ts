@@ -5,15 +5,17 @@ import {
 	HttpInterceptor,
 	HttpHandler,
 	HttpRequest,
-    HttpParams,
-    HttpHeaders,
-    HttpResponse        
+	HttpParams,
+	HttpHeaders,
+	HttpResponse
 } from "@angular/common/http";
-import "rxjs/add/operator/toPromise";
+//import "rxjs/add/operator/toPromise";
 
 import { EntityView } from "../../core/common/entityView";
 import { BaseService } from "../common/base.service";
 import { ApiController, RequestAction } from "../../core/enums";
+import { TriageAnalysisDto } from "../../core/triage/triageAnalysis";
+import { TriageAnalysis } from "../../core/triage/triageAnalysis";
 //import { HttpClient } from '@angular/common/http/src/client';
 
 // import {ExperimentDto} from "../../../core/experimentDto"
@@ -25,7 +27,7 @@ export class TriageService extends BaseService {
 	private triageServiceUrl = `${this.serverUrl}/TriageAnalysis`; // URL to web api
 	private epServiceUrl = `${this.serverUrl}/EntityPlatform`; // URL to web api
 
-	constructor(private http: HttpClient) {
+	constructor(private httpClient: HttpClient) {
 		super();
 	}
 
@@ -39,17 +41,20 @@ export class TriageService extends BaseService {
 			.set("viewKey", viewKey);
 		//const httpParams = new HttpParams().append('customerId', customerId).append('customerEnv', customerEnv).append('viewKey', viewKey);
 		console.log(httpParams.toString());
-		return this.http.get<EntityView>(`${this.triageServiceUrl}/entityView`, {
-            params: httpParams,
-            //headers: new HttpHeaders().set('responseType', 'blob'),
-		}); //.map((response) => response.json());
+		return this.httpClient.get<TriageAnalysis>(
+			`${this.triageServiceUrl}/triageAnalysis`,
+			{
+				params: httpParams
+				//headers: new HttpHeaders().set('responseType', 'blob'),
+			}
+		); //.map((response) => response.json());
 	}
 
 	getFunctoid(
 		customerId: string,
 		customerEnv: string,
-        viewKey: string,
-        dotSplitedVersionNum: string,
+		viewKey: string,
+		dotSplitedVersionNum: string,
 		functoidName: string
 	) {
 		const httpParams = new HttpParams()
@@ -58,23 +63,20 @@ export class TriageService extends BaseService {
 			.set("viewKey", viewKey)
 			.set("dotSplitedVersionNum", dotSplitedVersionNum)
 			.set("functoidName", functoidName);
-		return this.http.get(
-			`${this.epServiceUrl}/functoid`,
-            { 
-                observe: 'response',
-                params: httpParams,
-                responseType: 'arraybuffer'
-                //responseType: 'blob'
-                //headers: new HttpHeaders().set('Content-Type', 'undefined')
-            }
-		);
-    }
-    
-    getMappingFile(
+		return this.httpClient.get(`${this.epServiceUrl}/functoid`, {
+			observe: "response",
+			params: httpParams,
+			responseType: "arraybuffer"
+			//responseType: 'blob'
+			//headers: new HttpHeaders().set('Content-Type', 'undefined')
+		});
+	}
+
+	getMappingFile(
 		customerId: string,
 		customerEnv: string,
-        viewKey: string,
-        dotSplitedVersionNum: string,
+		viewKey: string,
+		dotSplitedVersionNum: string,
 		functoidName: string
 	) {
 		const httpParams = new HttpParams()
@@ -83,15 +85,47 @@ export class TriageService extends BaseService {
 			.set("viewKey", viewKey)
 			.set("dotSplitedVersionNum", dotSplitedVersionNum)
 			.set("mappingFileName", functoidName);
-		return this.http.get(
-			`${this.epServiceUrl}/mappingFile`,
-            { 
-                observe: 'response',
-                params: httpParams,
-                responseType: 'text'
-                //responseType: 'blob'
-                //headers: new HttpHeaders().set('Content-Type', 'undefined')
-            }
+		return this.httpClient.get(`${this.epServiceUrl}/mappingFile`, {
+			observe: "response",
+			params: httpParams,
+			responseType: "text"
+			//responseType: 'blob'
+			//headers: new HttpHeaders().set('Content-Type', 'undefined')
+		});
+	}
+
+	submitTriageAnalysisJob(
+		vc: string,
+		cloudPriority: number,
+		triageAnalysisDto: TriageAnalysisDto
+	) {
+		return this.httpClient.post(
+			`${this.triageServiceUrl}/triageAnalsisJob`,
+			{
+				cloudPriority: cloudPriority,
+				vc: vc,
+				triageAnalysisDto: triageAnalysisDto
+			},
+			{ headers: new HttpHeaders().set("User", "jixge") }
+		);
+	}
+
+	getTriageResultByChurnType(resultId: number, churnType: string) {
+		const httpParams = new HttpParams()
+			.set("resultId", resultId.toString())
+			.set("churnType", churnType);
+		return this.httpClient.get(
+			`${this.triageServiceUrl}/triageResultByChurnType`,
+			{ params: httpParams }
+		);
+	}
+
+	getTriageAnalysisJob(jobId: number) {
+		const httpParams = new HttpParams()
+			.set("jobId", jobId.toString());
+		return this.httpClient.get(
+			`${this.triageServiceUrl}/triageAnalsisJob`,
+			{ params: httpParams }
 		);
 	}
 
